@@ -33,7 +33,7 @@ db.once('open', function() {
   //Load the rest of the Server App through middleware
   middleware_then_route(app);
 
-  app.listen(app.get('port'), function() {
+  app.listen(app.get('port'), server_ip_address, function() {
     // console.log( "Listening on " + server_ip_address + ", port " + server_port );
     console.log('Attendance System Server listening on port '+ app.get('port'));
   });
