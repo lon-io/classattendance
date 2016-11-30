@@ -4,7 +4,7 @@ var path = require('path');
 var app = express();
 
 var db_name = 'classattendance';
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 //provide a sensible default for local development
