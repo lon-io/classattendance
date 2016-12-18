@@ -10,8 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent} from './login/login.component';
 import {RegisterComponent} from "./register/register.component";
-// import {DataService} from "../services/data.service";
-// import {ToastComponent} from "../shared/toast/toast.component";
+import {DataService} from "../services/data.service";
+import {ToastComponent} from "../shared/toast/toast.component";
 
 @NgModule({
     imports: [
@@ -26,8 +26,12 @@ import {RegisterComponent} from "./register/register.component";
         AboutComponent
     ],
     providers: [
-        // DataService,
-        // ToastComponent
+    ],
+    exports: [
+        // HomeComponent,
+        // AboutComponent,
+        // LoginComponent,
+        // RegisterComponent
     ]
 })
 export class FrontModule {}
