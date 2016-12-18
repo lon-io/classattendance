@@ -11,6 +11,7 @@ import { EqualValidator } from './services/equal-validator.directive';  // impor
 import { ToastComponent } from './shared/toast/toast.component';
 import { CoursesComponent } from './courses/courses.component';
 import {FrontModule} from "./front/front.module";
+import {CommonModule} from "@angular/common";
 
 const routing = RouterModule.forRoot([
     // { path: '',      component: HomeComponent },
@@ -23,12 +24,12 @@ const routing = RouterModule.forRoot([
 @NgModule({
   declarations: [
     AppComponent,
-    ToastComponent,
     EqualValidator,
     CoursesComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

@@ -3,7 +3,7 @@
  */
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
-import { FormsModule }    from '@angular/forms';
+import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import { FrontRoutingModule } from './front-routing.module';
 
 import { HomeComponent } from './home/home.component';
@@ -17,21 +17,21 @@ import {ToastComponent} from "../shared/toast/toast.component";
     imports: [
         CommonModule,
         FormsModule,
+        CommonModule,
+        ReactiveFormsModule,
         FrontRoutingModule
     ],
     declarations: [
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        AboutComponent
+        AboutComponent,
+        ToastComponent,
     ],
     providers: [
     ],
     exports: [
-        // HomeComponent,
-        // AboutComponent,
-        // LoginComponent,
-        // RegisterComponent
+        ToastComponent
     ]
 })
 export class FrontModule {}

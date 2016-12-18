@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private http: Http,
               private dataService: DataService,
-              // private toast: ToastComponent,
+              private toast: ToastComponent,
               private formBuilder: FormBuilder
   ) { }
 
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
         var newCat = res.json();
         this.cats.push(newCat);
         this.addCatForm.reset();
-        // this.toast.setMessage("item added successfully.", "success");
+        this.toast.setMessage("item added successfully.", "success");
       },
       error => console.log(error)
     );
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.cat = {};
-    // this.toast.setMessage("item editing cancelled.", "warning");
+    this.toast.setMessage("item editing cancelled.", "warning");
     // reload the cats to reset the editing
     this.getCats();
   }
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.cat = cat;
-        // this.toast.setMessage("item edited successfully.", "success");
+        this.toast.setMessage("item edited successfully.", "success");
       },
       error => console.log(error)
     );
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
         res => {
           var pos = this.cats.map(cat => { return cat._id }).indexOf(cat._id);
           this.cats.splice(pos, 1);
-          // this.toast.setMessage("item deleted successfully.", "success");
+          this.toast.setMessage("item deleted successfully.", "success");
         },
         error => console.log(error)
       );
