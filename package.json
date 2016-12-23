@@ -7,7 +7,7 @@
   "angular-cli": {},
   "scripts": {
     "dev": "ng build && nodemon start.js",
-    "start": "ng build && node start.js",
+    "start": "node start.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
