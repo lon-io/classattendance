@@ -12,6 +12,7 @@ import { LoginComponent} from './login/login.component';
 import {RegisterComponent} from "./register/register.component";
 import {DataService} from "../services/data.service";
 import {ToastComponent} from "../shared/toast/toast.component";
+import {EqualValidator} from "../services/equal-validator.directive";
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import {ToastComponent} from "../shared/toast/toast.component";
         RegisterComponent,
         AboutComponent,
         ToastComponent,
+        EqualValidator,
     ],
     providers: [
     ],

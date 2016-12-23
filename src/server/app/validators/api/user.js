@@ -8,6 +8,8 @@ var util = require('util');
 
 var validateUser = function(req, callback) {
 
+    // console.log(req.body);
+
     var valid = true;
     // validate the input
     req.checkBody('email', 'Email does not appear to be valid').isEmail();

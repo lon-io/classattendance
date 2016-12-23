@@ -6,7 +6,7 @@
   "description": "My Final Year Project Web App",
   "angular-cli": {},
   "scripts": {
-    "dev": "nodemon start.js",
+    "dev": "ng build && nodemon start.js",
     "start": "ng build && node start.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",

@@ -19,19 +19,19 @@ export class RegisterComponent implements OnInit {
   private isStudent : boolean;
 
   private registerForm: FormGroup;
-  private email = new FormControl("", Validators.required);
-  private password = new FormControl("", Validators.pattern(""));
-  private confirmPassword = new FormControl("", Validators.pattern(""));
-  private firstname = new FormControl("", Validators.required);
-  private  middlename = new FormControl("", Validators.required);
-  private  lastname = new FormControl("", Validators.required);
-  private matric_no = new FormControl("", Validators.pattern(""));
-  private rfid_uid = new FormControl("", Validators.pattern(""));
-  private gender = new FormControl("", Validators.required);
-  private role = new FormControl("", Validators.required);
-  private level = new FormControl("", Validators.pattern(""));
-  private title = new FormControl("", Validators.pattern(""));
-  private specialization = new FormControl("", Validators.pattern(""));
+  // private email = new FormControl("", Validators.required);
+  // private password = new FormControl("", Validators.pattern(""));
+  // private confirmPassword = new FormControl("", Validators.pattern(""));
+  // private firstname = new FormControl("", Validators.required);
+  // private  middlename = new FormControl("", Validators.required);
+  // private  lastname = new FormControl("", Validators.required);
+  // private matric_no = new FormControl("", Validators.pattern(""));
+  // private rfid_uid = new FormControl("", Validators.pattern(""));
+  // private gender = new FormControl("", Validators.required);
+  // private role = new FormControl("", Validators.required);
+  // private level = new FormControl("", Validators.pattern(""));
+  // private title = new FormControl("", Validators.pattern(""));
+  // private specialization = new FormControl("", Validators.pattern(""));
 
   /* standing data goes here*/
   public genders = [
@@ -77,25 +77,26 @@ export class RegisterComponent implements OnInit {
       title: null,
       specialization: null,
     };
-    this.registerForm = this.formBuilder.group({
-      email: this.email,
-      password: this.password,
-      confirmPasswrd: this.confirmPassword,
-      firstname: this.firstname,
-      middlename: this.middlename,
-      lastname: this.lastname,
-      matric_no: this.matric_no,
-      rfid_uid: this.rfid_uid,
-      gender: this.gender,
-      role: this.role,
-      level: this.level,
-      title: this.title,
-      specialization: this.specialization,
-    });
+    // this.registerForm = this.formBuilder.group({
+    //   email: this.user.email,
+    //   password: this.user.password,
+    //   confirmPassword: this.user.confirmPassword,
+    //   firstname: this.user.firstname,
+    //   middlename: this.user.middlename,
+    //   lastname: this.user.lastname,
+    //   matric_no: this.user.matric_no,
+    //   rfid_uid: this.user.rfid_uid,
+    //   gender: this.user.gender,
+    //   role: this.user.role,
+    //   level: this.user.level,
+    //   title: this.user.title,
+    //   specialization: this.user.specialization,
+    // });
     this.isStudent = this.user.role == this.roles[0].value ;
   }
 
   register(user) {
+    console.log(user);
     this.dataService.register(user).subscribe(
         res => {
           var user = res.json();

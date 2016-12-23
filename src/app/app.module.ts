@@ -24,7 +24,6 @@ const routing = RouterModule.forRoot([
 @NgModule({
   declarations: [
     AppComponent,
-    EqualValidator,
     CoursesComponent
   ],
   imports: [

@@ -42813,9 +42813,9 @@ var HomeComponent = (function () {
         this.isLoading = true;
         this.cat = {};
         this.isEditing = false;
-        this.name = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.age = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.weight = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
+        this.name = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
+        this.age = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
+        this.weight = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
     }
     HomeComponent.prototype.ngOnInit = function () {
         this.getCats();
@@ -42873,7 +42873,7 @@ var HomeComponent = (function () {
             template: __webpack_require__(666),
             styles: [__webpack_require__(658)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */]) === 'function' && _d) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */]) === 'function' && _d) || Object])
     ], HomeComponent);
     return HomeComponent;
     var _a, _b, _c, _d;
@@ -42913,8 +42913,8 @@ var LoginComponent = (function () {
         this.formBuilder = formBuilder;
         this.user = {};
         this.isEditing = false;
-        this.email = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.password = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
+        this.email = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
+        this.password = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
     }
     LoginComponent.prototype.ngOnInit = function () {
         this.loginForm = this.formBuilder.group({
@@ -42946,7 +42946,7 @@ var LoginComponent = (function () {
             template: __webpack_require__(667),
             styles: [__webpack_require__(659)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */]) === 'function' && _d) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */]) === 'function' && _d) || Object])
     ], LoginComponent);
     return LoginComponent;
     var _a, _b, _c, _d;
@@ -42984,19 +42984,19 @@ var RegisterComponent = (function () {
         this.dataService = dataService;
         this.toast = toast;
         this.formBuilder = formBuilder;
-        this.email = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.password = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
-        this.confirmPassword = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
-        this.firstname = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.middlename = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.lastname = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.matric_no = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
-        this.rfid_uid = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
-        this.gender = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.role = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.level = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
-        this.title = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
-        this.specialization = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].pattern(""));
+        // private email = new FormControl("", Validators.required);
+        // private password = new FormControl("", Validators.pattern(""));
+        // private confirmPassword = new FormControl("", Validators.pattern(""));
+        // private firstname = new FormControl("", Validators.required);
+        // private  middlename = new FormControl("", Validators.required);
+        // private  lastname = new FormControl("", Validators.required);
+        // private matric_no = new FormControl("", Validators.pattern(""));
+        // private rfid_uid = new FormControl("", Validators.pattern(""));
+        // private gender = new FormControl("", Validators.required);
+        // private role = new FormControl("", Validators.required);
+        // private level = new FormControl("", Validators.pattern(""));
+        // private title = new FormControl("", Validators.pattern(""));
+        // private specialization = new FormControl("", Validators.pattern(""));
         /* standing data goes here*/
         this.genders = [
             { value: 'F', display: 'Female' },
@@ -43036,25 +43036,26 @@ var RegisterComponent = (function () {
             title: null,
             specialization: null,
         };
-        this.registerForm = this.formBuilder.group({
-            email: this.email,
-            password: this.password,
-            confirmPasswrd: this.confirmPassword,
-            firstname: this.firstname,
-            middlename: this.middlename,
-            lastname: this.lastname,
-            matric_no: this.matric_no,
-            rfid_uid: this.rfid_uid,
-            gender: this.gender,
-            role: this.role,
-            level: this.level,
-            title: this.title,
-            specialization: this.specialization,
-        });
+        // this.registerForm = this.formBuilder.group({
+        //   email: this.user.email,
+        //   password: this.user.password,
+        //   confirmPassword: this.user.confirmPassword,
+        //   firstname: this.user.firstname,
+        //   middlename: this.user.middlename,
+        //   lastname: this.user.lastname,
+        //   matric_no: this.user.matric_no,
+        //   rfid_uid: this.user.rfid_uid,
+        //   gender: this.user.gender,
+        //   role: this.user.role,
+        //   level: this.user.level,
+        //   title: this.user.title,
+        //   specialization: this.user.specialization,
+        // });
         this.isStudent = this.user.role == this.roles[0].value;
     };
     RegisterComponent.prototype.register = function (user) {
         var _this = this;
+        console.log(user);
         this.dataService.register(user).subscribe(function (res) {
             var user = res.json();
             console.log(JSON.stringify(user));
@@ -43070,7 +43071,7 @@ var RegisterComponent = (function () {
             template: __webpack_require__(668),
             styles: [__webpack_require__(660)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */]) === 'function' && _d) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */]) === 'function' && _d) || Object])
     ], RegisterComponent);
     return RegisterComponent;
     var _a, _b, _c, _d;
@@ -54238,14 +54239,14 @@ var ReactiveFormsModule = (function () {
 /* unused harmony reexport MinLengthValidator */
 /* unused harmony reexport PatternValidator */
 /* unused harmony reexport RequiredValidator */
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_19__form_builder__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_19__form_builder__["a"]; });
 /* unused harmony reexport AbstractControl */
 /* unused harmony reexport FormArray */
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_20__model__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_20__model__["b"]; });
 /* unused harmony reexport FormGroup */
 /* unused harmony reexport NG_ASYNC_VALIDATORS */
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_21__validators__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_21__validators__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_21__validators__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_21__validators__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "e", function() { return __WEBPACK_IMPORTED_MODULE_22__form_providers__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "f", function() { return __WEBPACK_IMPORTED_MODULE_22__form_providers__["b"]; });
 /**
@@ -57331,11 +57332,10 @@ function getResolve(route) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(318);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(323);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_data_service__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_equal_validator_directive__ = __webpack_require__(494);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_toast_toast_component__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__courses_courses_component__ = __webpack_require__(490);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__front_front_module__ = __webpack_require__(492);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_toast_toast_component__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__courses_courses_component__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__front_front_module__ = __webpack_require__(492);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common__ = __webpack_require__(67);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -57357,13 +57357,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var routing = __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot([
     // { path: '',      component: HomeComponent },
     // { path: 'about', component: AboutComponent },
     // { path: 'login', component: LoginComponent },
     // { path: 'register', component: RegisterComponent },
-    { path: 'courses', component: __WEBPACK_IMPORTED_MODULE_9__courses_courses_component__["a" /* CoursesComponent */] },
+    { path: 'courses', component: __WEBPACK_IMPORTED_MODULE_8__courses_courses_component__["a" /* CoursesComponent */] },
 ]);
 var AppModule = (function () {
     function AppModule() {
@@ -57372,21 +57371,20 @@ var AppModule = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["H" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__services_equal_validator_directive__["a" /* EqualValidator */],
-                __WEBPACK_IMPORTED_MODULE_9__courses_courses_component__["a" /* CoursesComponent */]
+                __WEBPACK_IMPORTED_MODULE_8__courses_courses_component__["a" /* CoursesComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["b" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_11__angular_common__["b" /* CommonModule */],
+                __WEBPACK_IMPORTED_MODULE_10__angular_common__["b" /* CommonModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["d" /* HttpModule */],
                 routing,
-                __WEBPACK_IMPORTED_MODULE_10__front_front_module__["a" /* FrontModule */]
+                __WEBPACK_IMPORTED_MODULE_9__front_front_module__["a" /* FrontModule */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_6__services_data_service__["a" /* DataService */],
-                __WEBPACK_IMPORTED_MODULE_8__shared_toast_toast_component__["a" /* ToastComponent */]
+                __WEBPACK_IMPORTED_MODULE_7__shared_toast_toast_component__["a" /* ToastComponent */]
             ],
             schemas: [__WEBPACK_IMPORTED_MODULE_1__angular_core__["Y" /* CUSTOM_ELEMENTS_SCHEMA */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
@@ -57431,10 +57429,10 @@ var CoursesComponent = (function () {
         this.courses = [];
         this.isLoading = true;
         this.isEditing = false;
-        this.title = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.code = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.units = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
-        this.bio = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* Validators */].required);
+        this.title = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
+        this.code = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
+        this.units = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
+        this.bio = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* Validators */].required);
     }
     CoursesComponent.prototype.ngOnInit = function () {
         this.course = {
@@ -57515,7 +57513,7 @@ var CoursesComponent = (function () {
             template: __webpack_require__(664),
             styles: [__webpack_require__(656)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */]) === 'function' && _d) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["c" /* FormBuilder */]) === 'function' && _d) || Object])
     ], CoursesComponent);
     return CoursesComponent;
     var _a, _b, _c, _d;
@@ -57587,6 +57585,7 @@ var FrontRoutingModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__login_login_component__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__register_register_component__ = __webpack_require__(327);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_toast_toast_component__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_equal_validator_directive__ = __webpack_require__(494);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return FrontModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -57597,6 +57596,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -57624,6 +57624,7 @@ var FrontModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7__register_register_component__["a" /* RegisterComponent */],
                 __WEBPACK_IMPORTED_MODULE_5__about_about_component__["a" /* AboutComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__shared_toast_toast_component__["a" /* ToastComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__services_equal_validator_directive__["a" /* EqualValidator */],
             ],
             providers: [],
             exports: [
@@ -57712,7 +57713,7 @@ var EqualValidator = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Directive */])({
             selector: '[validateEqual][formControlName],[validateEqual][formControl],[validateEqual][ngModel]',
             providers: [
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* NG_VALIDATORS */], useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* forwardRef */])(function () { return EqualValidator; }), multi: true }
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* forwardRef */])(function () { return EqualValidator; }), multi: true }
             ]
         }),
         __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* Attribute */])('validateEqual')),
@@ -60873,7 +60874,7 @@ module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-h
 /* 668 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"card\" *ngIf=\"!isEditing\">\n  <h4 class=\"card-header\">Register</h4>\n  <div class=\"card-block\">\n    <form #f=\"ngForm\" (ngSubmit)=\"register(user)\">\n      <div class=\"form-group row\">\n        <label for=\"email\" class=\"col-sm-2 col-form-label\">Email</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"user.email\" [formControl] = \"registerForm.get('email')\" placeholder=\"Email\" required>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"password\" class=\"col-sm-2 col-form-label\">Password</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"password\" id=\"password\" name=\"password\" [ngModel]=\"user.password\"\n                 placeholder=\"Password\" validateEqual=\"confirmPassword\" reverse=\"true\" #password=\"ngModel\" required>\n            <small [hidden]=\"password.valid || (password.pristine && !f.submitted)\">\n                Password is required\n            </small>\n        </div>\n      </div>\n        <div class=\"form-group row\">\n            <label for=\"confirmPassword\" class=\"col-sm-2 col-form-label\">Confirm Password</label>\n            <div class=\"col-sm-10\">\n                <input class=\"form-control\" type=\"password\" id=\"confirmPassword\" name=\"confirmPassword\" [ngModel]=\"user.confirmPassword\"\n                       placeholder=\"ConfirmPassword\" validateEqual=\"password\" #confirmPassword=\"ngModel\" required>\n                <small [hidden]=\"confirmPassword.valid || (confirmPassword.pristine && !f.submitted)\">\n                    Password mismatch\n                </small>\n            </div>\n        </div>\n      <div class=\"form-group row\">\n        <label for=\"firstname\" class=\"col-sm-2 col-form-label\">Firstname</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"text\"  id=\"firstname\" name=\"firstname\" [(ngModel)]=\"user.firstname\"\n                 [formControl] = \"registerForm.get('firstname')\" required placeholder=\"Firstname\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"middlename\" class=\"col-sm-2 col-form-label\">Middlename</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"text\"  id=\"middlename\" name=\"middlename\" [(ngModel)]=\"user.middlename\" [formControl] = \"registerForm.get('middlename')\"\n                 required placeholder=\"Middlename\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"lastname\" class=\"col-sm-2 col-form-label\">Lastname</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"text\"  id=\"lastname\" name=\"lastname\" [(ngModel)]=\"user.lastname\"\n                 [formControl] = \"registerForm.get('lastname')\" required placeholder=\"Lastname\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"gender\" class=\"col-sm-2 col-form-label\">Gender</label>\n        <div class=\"col-sm-4\" *ngFor=\"let gender of genders\">\n          <input class=\"form-control\" type=\"radio\" id=\"gender\" name=\"gender\" [(ngModel)]=\"user.gender\"\n                 [formControl] = \"registerForm.get('gender')\"  [value]=\"gender.value\" required>\n          {{gender.display}}\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"role\" class=\"col-sm-2 col-form-label\">Role</label>\n        <div class=\"col-sm-4\" *ngFor=\"let role of roles; let i=index\">\n          <input class=\"form-control\" type=\"radio\" id=\"role\" name=\"role\" [(ngModel)]=\"user.role\"\n                 (ngModelChange)=\"setRole()\" [formControl] = \"registerForm.get('role')\" [value]=\"role.value\" required>\n          {{role.display}}\n        </div>\n      </div>\n      <div class=\"lecturer\" *ngIf=\"!isStudent\">\n        <div class=\"form-group row\">\n          <label for=\"title\" class=\"col-sm-2 col-form-label\">Title</label>\n          <div class=\"col-sm-10\">\n            <select id=\"title\" name=\"title\" [(ngModel)]=\"user.title\" [formControl] = \"registerForm.get('title')\" required>\n              <option *ngFor=\"let title of titles\" [ngValue]=\"title.value\">\n                {{title.display}}\n              </option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label for=\"specialization\" class=\"col-sm-2 col-form-label\">Specialization</label>\n          <div class=\"col-sm-10\">\n            <select id=\"specialization\" name=\"specialization\" [(ngModel)]=\"user.specialization\" required\n                    [formControl] = \"registerForm.get('specialization')\">\n              <option *ngFor=\"let specialization of specializations\" [ngValue]=\"specialization.value\">\n                {{specialization.display}}\n              </option>\n            </select>\n          </div>\n        </div>\n      </div>\n      <div class=\"student\" *ngIf=\"isStudent\">\n        <div class=\"form-group row\">\n          <label for=\"matric_no\" class=\"col-sm-2 col-form-label\">Matric Number</label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" type=\"text\"  id=\"matric_no\" name=\"matric_no\" [(ngModel)]=\"user.matric_no\"\n                   [formControl] = \"registerForm.get('matric_no')\" placeholder=\"XXX/XXXX/XXX\" required>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label for=\"rfid_uid\" class=\"col-sm-2 col-form-label\">RFID Tag UID</label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" type=\"text\"  id=\"rfid_uid\" name=\"rfid_uid\" [(ngModel)]=\"user.rfid_uid\"\n                   [formControl] = \"registerForm.get('rfid_uid')\" placeholder=\"XXX XXX XX\" required>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label for=\"level\" class=\"col-sm-2 col-form-label\">Level</label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" type=\"number\" id=\"level\" name=\"level\" [(ngModel)]=\"user.level\"\n                   [formControl] = \"registerForm.get('level')\" placeholder=\"Level\" step=\"100\" min=\"100\" max=\"500\">\n          </div>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <div class=\"offset-sm-2 col-sm-10\">\n          <button type=\"submit\" [disabled]=\"!f.valid\" class=\"btn btn-primary\">Register</button>\n        </div>\n      </div>\n      <div class=\"col-sm-12\" style=\"margin-top: 20px\" *ngIf=\"f\">\n        <div>Form details:-</div>\n        <pre>Is form valid?: <br>{{f.valid | json}}</pre>\n        <pre>Is form submitted?: <br>{{f.submitted | json}}</pre>\n        <pre>submitted value: <br>{{f.value | json}}</pre>\n      </div>\n    </form>\n  </div>\n</div>"
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"card\" *ngIf=\"!isEditing\">\n  <h4 class=\"card-header\">Register</h4>\n  <div class=\"card-block\">\n    <form #f=\"ngForm\" (ngSubmit)=\"register(f.value)\">\n      <div class=\"form-group row\">\n        <label for=\"email\" class=\"col-sm-2 col-form-label\">Email</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"email\" id=\"email\" name=\"email\" [(ngModel)]=\"user.email\"  placeholder=\"Email\" required>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"password\" class=\"col-sm-2 col-form-label\">Password</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"password\" id=\"password\" name=\"password\" [(ngModel)]=\"user.password\"\n                 #password=\"ngModel\" placeholder=\"Password\" validateEqual=\"confirmPassword\" reverse=\"true\" required>\n            <small [hidden]=\"password.valid || (password.pristine && !f.submitted)\">\n                Password is required\n            </small>\n        </div>\n      </div>\n        <div class=\"form-group row\">\n            <label for=\"confirmPassword\" class=\"col-sm-2 col-form-label\">Confirm Password</label>\n            <div class=\"col-sm-10\">\n                <input class=\"form-control\" type=\"password\" id=\"confirmPassword\" name=\"confirmPassword\" [(ngModel)]=\"user.confirmPassword\"\n                       #confirmPassword=\"ngModel\" placeholder=\"ConfirmPassword\" validateEqual=\"password\" required>\n                <small [hidden]=\"confirmPassword.valid || (confirmPassword.pristine && !f.submitted)\">\n                    Password mismatch\n                </small>\n            </div>\n        </div>\n      <div class=\"form-group row\">\n        <label for=\"firstname\" class=\"col-sm-2 col-form-label\">Firstname</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"text\"  id=\"firstname\" name=\"firstname\" [(ngModel)]=\"user.firstname\"\n                 required placeholder=\"Firstname\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"middlename\" class=\"col-sm-2 col-form-label\">Middlename</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"text\"  id=\"middlename\" name=\"middlename\" [(ngModel)]=\"user.middlename\"\n                 required placeholder=\"Middlename\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"lastname\" class=\"col-sm-2 col-form-label\">Lastname</label>\n        <div class=\"col-sm-10\">\n          <input class=\"form-control\" type=\"text\"  id=\"lastname\" name=\"lastname\" [(ngModel)]=\"user.lastname\"\n                  required placeholder=\"Lastname\">\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"gender\" class=\"col-sm-2 col-form-label\">Gender</label>\n        <div class=\"col-sm-4\" *ngFor=\"let gender of genders\">\n          <input class=\"form-control\" type=\"radio\" id=\"gender\" name=\"gender\" [(ngModel)]=\"user.gender\"\n                  [value]=\"gender.value\" required>\n          {{gender.display}}\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <label for=\"role\" class=\"col-sm-2 col-form-label\">Role</label>\n        <div class=\"col-sm-4\" *ngFor=\"let role of roles; let i=index\">\n          <input class=\"form-control\" type=\"radio\" id=\"role\" name=\"role\" [(ngModel)]=\"user.role\"\n                 (ngModelChange)=\"setRole()\"  [value]=\"role.value\" required>\n          {{role.display}}\n        </div>\n      </div>\n      <div class=\"lecturer\" *ngIf=\"!isStudent\">\n        <div class=\"form-group row\">\n          <label for=\"title\" class=\"col-sm-2 col-form-label\">Title</label>\n          <div class=\"col-sm-10\">\n            <select id=\"title\" name=\"title\" [(ngModel)]=\"user.title\"  required>\n              <option *ngFor=\"let title of titles\" [ngValue]=\"title.value\">\n                {{title.display}}\n              </option>\n            </select>\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label for=\"specialization\" class=\"col-sm-2 col-form-label\">Specialization</label>\n          <div class=\"col-sm-10\">\n            <select id=\"specialization\" name=\"specialization\" [(ngModel)]=\"user.specialization\" >\n              <option *ngFor=\"let specialization of specializations\" [ngValue]=\"specialization.value\">\n                {{specialization.display}}\n              </option>\n            </select>\n          </div>\n        </div>\n      </div>\n      <div class=\"student\" *ngIf=\"isStudent\">\n        <div class=\"form-group row\">\n          <label for=\"matric_no\" class=\"col-sm-2 col-form-label\">Matric Number</label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" type=\"text\"  id=\"matric_no\" name=\"matric_no\" [(ngModel)]=\"user.matric_no\"\n                   placeholder=\"XXX/XXXX/XXX\" >\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label for=\"rfid_uid\" class=\"col-sm-2 col-form-label\">RFID Tag UID</label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" type=\"text\"  id=\"rfid_uid\" name=\"rfid_uid\" [(ngModel)]=\"user.rfid_uid\"\n                    placeholder=\"XXX XXX XX\" >\n          </div>\n        </div>\n        <div class=\"form-group row\">\n          <label for=\"level\" class=\"col-sm-2 col-form-label\">Level</label>\n          <div class=\"col-sm-10\">\n            <input class=\"form-control\" type=\"number\" id=\"level\" name=\"level\" [(ngModel)]=\"user.level\"\n                    placeholder=\"Level\" step=\"100\" min=\"100\" max=\"500\">\n          </div>\n        </div>\n      </div>\n      <div class=\"form-group row\">\n        <div class=\"offset-sm-2 col-sm-10\">\n          <button type=\"submit\" [disabled]=\"!f.valid\" class=\"btn btn-primary\">Register</button>\n        </div>\n      </div>\n      <div class=\"col-sm-12\" style=\"margin-top: 20px\" *ngIf=\"f\">\n        <div>Form details:-</div>\n        <pre>Is form valid?: <br>{{f.valid | json}}</pre>\n        <pre>Is form submitted?: <br>{{f.submitted | json}}</pre>\n        <pre>submitted value: <br>{{f.value | json}}</pre>\n      </div>\n    </form>\n  </div>\n</div>"
 
 /***/ },
 /* 669 */

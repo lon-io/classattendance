@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
         // this.loginForm.reset();
         console.log(JSON.stringify(user));
         this.toast.setMessage(JSON.stringify(user), "success");
+
       },
       error => console.log(error)
     );
