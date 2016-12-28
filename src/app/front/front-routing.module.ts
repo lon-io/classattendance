@@ -10,7 +10,8 @@ import {LoginComponent} from "./login/login.component";
 import {AboutComponent} from "./about/about.component";
 
 const heroesRoutes: Routes = [
-    { path: '',  component: HomeComponent },
+    {   path: '', redirectTo: '/home', pathMatch: 'full'},
+    { path: 'home',  component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },

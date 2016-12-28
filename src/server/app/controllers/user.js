@@ -19,22 +19,21 @@ var login = function(req,callback) {
     var email = cleanString(body.email);
     var password = cleanString(body.password);
     User.find({email: email},function(err,users){
-
         if(users.length != 0){
-
             var salt = users[0].salt;
             var hash = users[0].hash;
             var token = users[0].token;
             var newpassword = salt + password;
             var re_hash = crypto.createHash('sha512').update(newpassword).digest("hex");
             var grav_url = gravatar.url(email, {s: '200', r: 'pg', d: '404'});
+            users[0].grav_url = grav_url;
             if(hash == re_hash){
-                callback({'response':"Login Sucess",'res':true,'token':token,'grav':grav_url});
+                callback({'message':"Login Sucess",'error':false,'user':users[0], 'grav_url': grav_url});
             }else{
-                callback({'response':"Invalid Password",'res':false});
+                callback({'message':"Invalid Password",'error':true});
             }
         }else {
-            callback({'response':"User not exist",'res':false});
+            callback({'message':"User not exist",'error':true});
         }
     });
 };
@@ -82,21 +81,21 @@ var register = function(req,callback) {
                                     }
                                     return next(err);
                                 }
-                                callback({'response':"Sucessfully Registered"});
+                                callback({'message':"Sucessfully Registered", 'error':false});
                             });
                         }else{
 
-                            callback({'response':"Email already Registered"});
+                            callback({'message':"Email already Registered", 'error':true});
                         }});}else{
 
-                    callback({'response':"Password Weak"});
+                    callback({'message':"Password Weak", 'error':true});
 
                 }}else{
-                console.log("Email" + email);
-                callback({'response':"Email Not Valid"});
+                // console.log("Email" + email);
+                callback({'message':"Email Not Valid", 'error':true});
             }
         }else{
-            callback({'response': errors});
+            callback({'message': errors, 'error':true});
         }
     });
 };
@@ -109,9 +108,9 @@ var update_rfid_uid = function(req,callback) {
         student.rfid_uid = rfid_uid;
         student.save(function (err) {
             if(err) {
-                callback({'response':"Update successful",'res':true,'error':false});
+                callback({'message':"Update successful",'error':false});
             }else{
-                callback({'response':"Unable to update " + err,'res':false, 'error':false});
+                callback({'message':"Unable to update " + err, 'error':false});
             }
         });
     });
@@ -129,7 +128,7 @@ var getUID = function(req,callback) {
         }
     });
     console.log('done');
-    callback({'response': "Success",'uid':uid,'error':false})
+    callback({'message': "Success",'uid':uid,'error':false})
 };
 
 var uidExists = function (rfid_uid) {

@@ -43,7 +43,6 @@ export class DataService {
     return this.http.delete(`/api/course/${course._id}`, this.options);
   }
 
-
   login(user){
     return this.http.post("/api/login", JSON.stringify(user), this.options)
   }

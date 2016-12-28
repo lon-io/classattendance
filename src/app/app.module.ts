@@ -12,34 +12,39 @@ import { ToastComponent } from './shared/toast/toast.component';
 import { CoursesComponent } from './courses/courses.component';
 import {FrontModule} from "./front/front.module";
 import {CommonModule} from "@angular/common";
+import {UserService} from "./services/user/user.service";
+import {GlobalModule} from "./global/global.module";
+import {StudentModule} from "./student/student.module";
+import {LoggedInGuard} from "./services/logged-in.guard";
 
 const routing = RouterModule.forRoot([
-    // { path: '',      component: HomeComponent },
-    // { path: 'about', component: AboutComponent },
-    // { path: 'login', component: LoginComponent },
-    // { path: 'register', component: RegisterComponent },
-    { path: 'courses', component: CoursesComponent},
-  // { path: '**', component: PageNotFoundComponent }
+    { path: 'courses', component: CoursesComponent, canActivate: [LoggedInGuard]},
+    // { path: '**', component: PageNotFoundComponent }
 ]);
 @NgModule({
-  declarations: [
-    AppComponent,
-    CoursesComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    routing,
-    FrontModule
-  ],
-  providers: [
-    DataService,
-    ToastComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CoursesComponent,
+        // ToastComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule,
+        routing,
+        GlobalModule,
+        FrontModule,
+        StudentModule
+    ],
+    providers: [
+        DataService,
+        UserService,
+        ToastComponent,
+        LoggedInGuard
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,135 +1,138 @@
 <div class="card" *ngIf="isLoading">
-  <h4 class="card-header">Loading...</h4>
-  <div class="card-block text-xs-center">
-    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
-  </div>
+    <h4 class="card-header">Loading...</h4>
+    <div class="card-block text-xs-center">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+    </div>
 </div>
 
 <app-toast [message]="toast.message"></app-toast>
 
-<div class="card" *ngIf="!isEditing">
-  <h4 class="card-header">Register</h4>
-  <div class="card-block">
-    <form #f="ngForm" (ngSubmit)="register(f.value)">
-      <div class="form-group row">
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-          <input class="form-control" type="email" id="email" name="email" [(ngModel)]="user.email"  placeholder="Email" required>
+<section>
+
+    <div class="card col-sm-6 offset-sm-3" *ngIf="!isEditing">
+        <h4 class="card-header">Register</h4>
+        <div class="card-block">
+            <form #f="ngForm" (ngSubmit)="register(f.value)">
+                <div class="form-group row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="email" id="email" name="email" [(ngModel)]="user.email"  placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="password" id="password" name="password" [(ngModel)]="user.password"
+                               #password="ngModel" placeholder="Password" validateEqual="confirmPassword" reverse="true" required>
+                        <small [hidden]="password.valid || (password.pristine && !f.submitted)">
+                            Password is required
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="user.confirmPassword"
+                               #confirmPassword="ngModel" placeholder="ConfirmPassword" validateEqual="password" required>
+                        <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)">
+                            Password mismatch
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="firstname" class="col-sm-2 col-form-label">Firstname</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text"  id="firstname" name="firstname" [(ngModel)]="user.firstname"
+                               required placeholder="Firstname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="middlename" class="col-sm-2 col-form-label">Middlename</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text"  id="middlename" name="middlename" [(ngModel)]="user.middlename"
+                               required placeholder="Middlename">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text"  id="lastname" name="lastname" [(ngModel)]="user.lastname"
+                               required placeholder="Lastname">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                    <div class="col-sm-4" *ngFor="let gender of genders">
+                        <input class="form-control" type="radio" id="gender" name="gender" [(ngModel)]="user.gender"
+                               [value]="gender.value" required>
+                        {{gender.display}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="role" class="col-sm-2 col-form-label">Role</label>
+                    <div class="col-sm-4" *ngFor="let role of roles; let i=index">
+                        <input class="form-control" type="radio" id="role" name="role" [(ngModel)]="user.role"
+                               (ngModelChange)="setRole()"  [value]="role.value" required>
+                        {{role.display}}
+                    </div>
+                </div>
+                <div class="lecturer" *ngIf="!isStudent">
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            <select id="title" name="title" [(ngModel)]="user.title"  required>
+                                <option *ngFor="let title of titles" [ngValue]="title.value">
+                                    {{title.display}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="specialization" class="col-sm-2 col-form-label">Specialization</label>
+                        <div class="col-sm-10">
+                            <select id="specialization" name="specialization" [(ngModel)]="user.specialization" >
+                                <option *ngFor="let specialization of specializations" [ngValue]="specialization.value">
+                                    {{specialization.display}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="student" *ngIf="isStudent">
+                    <div class="form-group row">
+                        <label for="matric_no" class="col-sm-2 col-form-label">Matric Number</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text"  id="matric_no" name="matric_no" [(ngModel)]="user.matric_no"
+                                   placeholder="XXX/XXXX/XXX" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rfid_uid" class="col-sm-2 col-form-label">RFID Tag UID</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text"  id="rfid_uid" name="rfid_uid" [(ngModel)]="user.rfid_uid"
+                                   placeholder="XXX XXX XX" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="level" class="col-sm-2 col-form-label">Level</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" id="level" name="level" [(ngModel)]="user.level"
+                                   placeholder="Level" step="100" min="100" max="500">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: 20px" *ngIf="f">
+                    <div>Form details:-</div>
+                    <pre>Is form valid?: <br>{{f.valid | json}}</pre>
+                    <pre>Is form submitted?: <br>{{f.submitted | json}}</pre>
+                    <pre>submitted value: <br>{{f.value | json}}</pre>
+                </div>
+            </form>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-          <input class="form-control" type="password" id="password" name="password" [(ngModel)]="user.password"
-                 #password="ngModel" placeholder="Password" validateEqual="confirmPassword" reverse="true" required>
-            <small [hidden]="password.valid || (password.pristine && !f.submitted)">
-                Password is required
-            </small>
-        </div>
-      </div>
-        <div class="form-group row">
-            <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="user.confirmPassword"
-                       #confirmPassword="ngModel" placeholder="ConfirmPassword" validateEqual="password" required>
-                <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)">
-                    Password mismatch
-                </small>
-            </div>
-        </div>
-      <div class="form-group row">
-        <label for="firstname" class="col-sm-2 col-form-label">Firstname</label>
-        <div class="col-sm-10">
-          <input class="form-control" type="text"  id="firstname" name="firstname" [(ngModel)]="user.firstname"
-                 required placeholder="Firstname">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="middlename" class="col-sm-2 col-form-label">Middlename</label>
-        <div class="col-sm-10">
-          <input class="form-control" type="text"  id="middlename" name="middlename" [(ngModel)]="user.middlename"
-                 required placeholder="Middlename">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="lastname" class="col-sm-2 col-form-label">Lastname</label>
-        <div class="col-sm-10">
-          <input class="form-control" type="text"  id="lastname" name="lastname" [(ngModel)]="user.lastname"
-                  required placeholder="Lastname">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="gender" class="col-sm-2 col-form-label">Gender</label>
-        <div class="col-sm-4" *ngFor="let gender of genders">
-          <input class="form-control" type="radio" id="gender" name="gender" [(ngModel)]="user.gender"
-                  [value]="gender.value" required>
-          {{gender.display}}
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="role" class="col-sm-2 col-form-label">Role</label>
-        <div class="col-sm-4" *ngFor="let role of roles; let i=index">
-          <input class="form-control" type="radio" id="role" name="role" [(ngModel)]="user.role"
-                 (ngModelChange)="setRole()"  [value]="role.value" required>
-          {{role.display}}
-        </div>
-      </div>
-      <div class="lecturer" *ngIf="!isStudent">
-        <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label">Title</label>
-          <div class="col-sm-10">
-            <select id="title" name="title" [(ngModel)]="user.title"  required>
-              <option *ngFor="let title of titles" [ngValue]="title.value">
-                {{title.display}}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="specialization" class="col-sm-2 col-form-label">Specialization</label>
-          <div class="col-sm-10">
-            <select id="specialization" name="specialization" [(ngModel)]="user.specialization" >
-              <option *ngFor="let specialization of specializations" [ngValue]="specialization.value">
-                {{specialization.display}}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="student" *ngIf="isStudent">
-        <div class="form-group row">
-          <label for="matric_no" class="col-sm-2 col-form-label">Matric Number</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text"  id="matric_no" name="matric_no" [(ngModel)]="user.matric_no"
-                   placeholder="XXX/XXXX/XXX" >
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="rfid_uid" class="col-sm-2 col-form-label">RFID Tag UID</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text"  id="rfid_uid" name="rfid_uid" [(ngModel)]="user.rfid_uid"
-                    placeholder="XXX XXX XX" >
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="level" class="col-sm-2 col-form-label">Level</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="number" id="level" name="level" [(ngModel)]="user.level"
-                    placeholder="Level" step="100" min="100" max="500">
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-          <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Register</button>
-        </div>
-      </div>
-      <div class="col-sm-12" style="margin-top: 20px" *ngIf="f">
-        <div>Form details:-</div>
-        <pre>Is form valid?: <br>{{f.valid | json}}</pre>
-        <pre>Is form submitted?: <br>{{f.submitted | json}}</pre>
-        <pre>submitted value: <br>{{f.value | json}}</pre>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
+</section>
