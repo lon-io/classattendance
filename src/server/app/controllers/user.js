@@ -6,6 +6,7 @@ var hash = require('../helpers/hash');
 var cleanString = require('../helpers/cleanString');
 var mongoose = require('mongoose');
 var User = require('../models/index').user;
+var Role = require('../models/index').role;
 var Lecturer = require('../models/index').lecturer;
 var Student = require('../models/index').student;
 var gravatar = require('gravatar');
@@ -20,18 +21,23 @@ var login = function(req,callback) {
     var password = cleanString(body.password);
     User.find({email: email},function(err,users){
         if(users.length != 0){
-            var salt = users[0].salt;
-            var hash = users[0].hash;
-            var token = users[0].token;
-            var newpassword = salt + password;
-            var re_hash = crypto.createHash('sha512').update(newpassword).digest("hex");
-            var grav_url = gravatar.url(email, {s: '200', r: 'pg', d: '404'});
-            users[0].grav_url = grav_url;
-            if(hash == re_hash){
-                callback({'message':"Login Sucess",'error':false,'user':users[0], 'grav_url': grav_url});
-            }else{
-                callback({'message':"Invalid Password",'error':true});
-            }
+            Role.findById(users[0].role).exec()
+                .then( (role) => {
+                    var salt = users[0].salt;
+                    var hash = users[0].hash;
+                    var token = users[0].token;
+                    var newpassword = salt + password;
+                    var re_hash = crypto.createHash('sha512').update(newpassword).digest("hex");
+                    var grav_url = gravatar.url(email, {s: '200', r: 'pg', d: '404'});
+                    users[0].role = role;
+                    users[0].grav_url = grav_url;
+                    if(hash == re_hash){
+                        callback({'message':"Login Sucess",'error':false,'user':users[0], 'grav_url': grav_url});
+                    }else{
+                        callback({'message':"Invalid Password",'error':true});
+                    }
+                })
+                .catch( err => callback({'message': err,'error':true}))
         }else {
             callback({'message':"User not exist",'error':true});
         }
@@ -60,7 +66,6 @@ var register = function(req,callback) {
                                 hash: hash.hash(password),
                                 token: hash.token(email)
                             };
-
                             if(role == roles.LECTURER){
                                 newuser.title = cleanString(body.title);
                                 newuser.specialization = cleanString(body.specialization);
@@ -73,7 +78,6 @@ var register = function(req,callback) {
                             }else{
                                 user = new User(newuser);
                             }
-
                             user.save(function (err) {
                                 if (err) {
                                     if (err instanceof mongoose.Error.ValidationError) {
@@ -122,9 +126,9 @@ var getUID = function(req,callback) {
     var rfid_uid = uid['s1']+" "+uid['s1']+" "+uid['s3']+" "+uid['s4'];
     uidExists(rfid_uid).then(function (exists) {    // Should really check more than once
         if(exists){
-                console.log('RFID UID Exists, trying again!');
-                uid = generate_uid();
-                rfid_uid = uid['s1']+" "+uid['s1']+" "+uid['s3']+" "+uid['s4'];
+            console.log('RFID UID Exists, trying again!');
+            uid = generate_uid();
+            rfid_uid = uid['s1']+" "+uid['s1']+" "+uid['s3']+" "+uid['s4'];
         }
     });
     console.log('done');
@@ -133,8 +137,8 @@ var getUID = function(req,callback) {
 
 var uidExists = function (rfid_uid) {
     return new Promise((resolve, reject) => {
-            // reject and resolve are functions provided by the Promise
-            // implementation. Call only one of them.
+        // reject and resolve are functions provided by the Promise
+        // implementation. Call only one of them.
 
         // Do your logic here
         User.count({rfid_uid: rfid_uid}, function (err, count) {
@@ -147,7 +151,7 @@ var uidExists = function (rfid_uid) {
             // console.log(count);
             return resolve(count > 0)
         });
-})
+    })
 };
 
 module.exports = {'register' : register, 'login': login, 'update_rfid_uid': update_rfid_uid, 'getUID': getUID};

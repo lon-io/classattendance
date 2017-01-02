@@ -3,6 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import {isNullOrUndefined} from "util";
+import {isNull} from "util";
 
 @Injectable()
 export class UserService {
@@ -45,6 +46,13 @@ export class UserService {
     isUserALecturer(){
         if(this.isLoggedIn()){
             return JSON.parse(localStorage.getItem('current_user')).__t === 'Lecturer';
+        }
+        return false;
+    }
+
+    isUserAnAdmin(){
+        if(this.isLoggedIn()){
+            return isNull(JSON.parse(localStorage.getItem('current_user')).role) ? false : (JSON.parse(localStorage.getItem('current_user')).role.slug  === 'admin');
         }
         return false;
     }
