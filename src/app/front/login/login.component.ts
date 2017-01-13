@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   private isEditing = false;
 
   private loginForm: FormGroup;
-  private email = new FormControl("", Validators.required);
-  private password = new FormControl("", Validators.required);
+  private email = new FormControl('', Validators.required);
+  private password = new FormControl('', Validators.required);
 
   constructor(private http: Http,
               private dataService: DataService,
@@ -45,18 +45,24 @@ export class LoginComponent implements OnInit {
         let response = res.json();
         // this.loginForm.reset();
         // console.log(JSON.stringify(response));
-        if(response.error){
-            this.toast.setMessage(response.message, "danger");
-        }else{
+        if (response.error) {
+            this.toast.setMessage(response.message, 'danger');
+        }else {
             this.userService.login(response);
-            this.toast.setMessage(response.message, "success")
-            this.router.navigate(['profile']);
+            this.toast.setMessage(response.message, 'success');
+            if (this.userService.isUserAStudent()) {
+                this.router.navigate(['student']);
+            }else if (this.userService.isUserALecturer()) {
+                this.router.navigate(['lecturer']);
+            }else if (this.userService.isUserAnAdmin()) {
+                this.router.navigate(['admin']);
+            }
         }
 
       },
         (error => {
             console.log(error);
-            this.toast.setMessage(error, "danger");
+            this.toast.setMessage(error, 'danger');
         })
     );
   }
@@ -69,6 +75,6 @@ export class LoginComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.user = {};
-    this.toast.setMessage("item editing cancelled.", "warning");
+    this.toast.setMessage('item editing cancelled.', 'warning');
   }
 }

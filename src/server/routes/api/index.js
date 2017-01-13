@@ -5,7 +5,10 @@ var mongoose = require('mongoose');
 var StudentController = require('../../app/controllers').student;
 var UserController = require('../../app/controllers').user;
 
-var login = require('./login'), cats = require('./cats'), courses = require('./courses');
+var login = require('./login'),
+    cats = require('./cats'),
+    courses = require('./courses'),
+    users = require('./users');
 
 
 router.post('/student/rfid_uid', function(req, res, next){
@@ -23,5 +26,6 @@ router.post('/student/rfid_uid', function(req, res, next){
     .use(login)// login / logout routes
     .use(cats)//
     .use(courses)
+    .use(users)
 
 module.exports = router;

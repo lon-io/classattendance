@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
 import { ToastComponent } from '../../shared/toast/toast.component';
 
@@ -16,22 +15,8 @@ import { User } from './user.interface';
 export class RegisterComponent implements OnInit {
 
   public user: User;
-  private isStudent : boolean;
+  private isStudent: boolean;
 
-  private registerForm: FormGroup;
-  // private email = new FormControl("", Validators.required);
-  // private password = new FormControl("", Validators.pattern(""));
-  // private confirmPassword = new FormControl("", Validators.pattern(""));
-  // private firstname = new FormControl("", Validators.required);
-  // private  middlename = new FormControl("", Validators.required);
-  // private  lastname = new FormControl("", Validators.required);
-  // private matric_no = new FormControl("", Validators.pattern(""));
-  // private rfid_uid = new FormControl("", Validators.pattern(""));
-  // private gender = new FormControl("", Validators.required);
-  // private role = new FormControl("", Validators.required);
-  // private level = new FormControl("", Validators.pattern(""));
-  // private title = new FormControl("", Validators.pattern(""));
-  // private specialization = new FormControl("", Validators.pattern(""));
 
   /* standing data goes here*/
   public genders = [
@@ -58,8 +43,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private http: Http,
               private dataService: DataService,
-              private toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+              private toast: ToastComponent) { }
 
   ngOnInit() {
     this.user = {
@@ -92,22 +76,22 @@ export class RegisterComponent implements OnInit {
     //   title: this.user.title,
     //   specialization: this.user.specialization,
     // });
-    this.isStudent = this.user.role == this.roles[0].value ;
+    this.isStudent = this.user.role === this.roles[0].value ;
   }
 
   register(user) {
     console.log(user);
     this.dataService.register(user).subscribe(
         res => {
-          var user = res.json();
-          console.log(JSON.stringify(user));
-          this.toast.setMessage(JSON.stringify(user), "success");
+          let user_ = res.json();
+          console.log(JSON.stringify(user_));
+          this.toast.setMessage(JSON.stringify(user_), 'success');
         },
         error => console.log(error)
     );
   }
 
-  setRole(){
-    this.isStudent = this.user.role == this.roles[0].value;
+  setRole() {
+    this.isStudent = this.user.role === this.roles[0].value;
   }
 }

@@ -10,9 +10,9 @@ var CourseSchema = mongoose.Schema({
     code: String,
     units:  { type: Number, min: 1, max: 5 },
     about: {page: {raw: String, html: String}, bio: String},
-    coordinators:[{type: ObjectId, ref: 'lecturer'}],
-    lecturers: [{ type: ObjectId, ref: 'lecturer' }],
-    students: [{ type: ObjectId, ref: 'student' }],
+    coordinator:{type: ObjectId, ref: 'user'},
+    lecturers: { type: ObjectId, ref: 'user' },
+    students: [{ type: ObjectId, ref: 'user' }],
     lectures: [{ type: ObjectId, ref: 'lecture' }],
     schedule: [{time : Date, venue : String}],
     recitations: [{ type: ObjectId, ref: 'recitations' }]

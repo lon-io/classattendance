@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ToastComponent} from "../../shared/toast/toast.component";
+import {ToastComponent} from '../../shared/toast/toast.component';
 
 @Component({
   selector: 'app-about',
@@ -8,6 +8,6 @@ import {ToastComponent} from "../../shared/toast/toast.component";
 })
 export class AboutComponent {
 
-  constructor(private toast : ToastComponent) { }
+  constructor(private toast: ToastComponent) { }
 
 }

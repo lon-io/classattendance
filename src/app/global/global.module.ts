@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ToastComponent} from "../shared/toast/toast.component";
+import {ToastComponent} from '../shared/toast/toast.component';
 
 @NgModule({
   imports: [

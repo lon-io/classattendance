@@ -16,7 +16,7 @@ export class DataService {
   }
 
   addCat(cat) {
-    return this.http.post("/api/cat", JSON.stringify(cat), this.options);
+    return this.http.post('/api/cat', JSON.stringify(cat), this.options);
   }
 
   editCat(cat) {
@@ -31,8 +31,16 @@ export class DataService {
     return this.http.get('/api/courses').map(res => res.json());
   }
 
+  getLecturers() {
+    return this.http.get('/api/lecturers').map(res => res.json());
+  }
+
+  getStudents() {
+    return this.http.get('/api/students').map(res => res.json());
+  }
+
   addCourse(course) {
-    return this.http.post("/api/course", JSON.stringify(course), this.options);
+    return this.http.post('/api/course', JSON.stringify(course), this.options);
   }
 
   editCourse(course) {
@@ -43,11 +51,11 @@ export class DataService {
     return this.http.delete(`/api/course/${course._id}`, this.options);
   }
 
-  login(user){
-    return this.http.post("/api/login", JSON.stringify(user), this.options)
+  login(user) {
+    return this.http.post('/api/login', JSON.stringify(user), this.options);
   }
 
-  register(user){
-    return this.http.post("/api/register", JSON.stringify(user), this.options)
+  register(user) {
+    return this.http.post('/api/register', JSON.stringify(user), this.options);
   }
 }

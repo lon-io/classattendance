@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service'
-import { ToastComponent } from '../../shared/toast/toast.component'
-import {UserService} from "../../services/user/user.service";
-import {User} from "../../front/register/user.interface";
+import { ToastComponent } from '../../shared/toast/toast.component';
+import {UserService} from '../../services/user/user.service';
+import {User} from '../../front/register/user.interface';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +10,7 @@ import {User} from "../../front/register/user.interface";
 })
 export class ProfileComponent implements OnInit {
 
-  private user : User;
+  private user: User;
 
   constructor(private userService: UserService,
               private toast: ToastComponent,

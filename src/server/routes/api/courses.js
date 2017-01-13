@@ -9,10 +9,15 @@ var Course = require('../../app/models').course;
 // select all
 router.get('/courses', function(req, res) {
     console.log("Courses called");
-    Course.find({}, function(err, docs) {
-        if(err) return console.error(err);
-        res.json(docs);
-    });
+    Course.find({})
+        .populate('coordinator')
+        .exec()
+        .then(docs => {
+            return res.json(docs)
+        })
+        .catch(err => {
+            return console.error(err);
+        })
 });
 
 // count all
@@ -28,7 +33,10 @@ router.post('/course', function(req, res) {
     var obj = new Course(req.body);
     obj.save(function(err, obj) {
         if(err) return console.error(err);
-        res.status(200).json(obj);
+        Course.populate(obj, 'coordinator', (err, doc) => {
+            if(err) return console.error(err);
+            res.status(200).json(doc);
+        })
     });
 });
 
@@ -42,9 +50,14 @@ router.get('/course/:id', function(req, res) {
 
 // update by id
 router.put('/course/:id', function(req, res) {
-    Course.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
+    Course.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, doc) {
         if(err) return console.error(err);
-        res.sendStatus(200);
+        console.log(doc)
+        Course.populate(doc, 'coordinator', (err, doc) => {
+            console.log(doc)
+            if(err) return console.error(err);
+            res.status(200).json(doc);
+        })
     })
 });
 
