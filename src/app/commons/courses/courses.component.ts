@@ -6,6 +6,7 @@ import {Course} from './course.interface';
 import {DataService} from '../../services/data.service';
 import {ToastComponent} from '../../shared/toast/toast.component';
 import {UserService} from '../../services/user/user.service';
+import {ViewChildren} from '@angular/core/src/metadata/di';
 
 
 @Component({
@@ -15,6 +16,8 @@ import {UserService} from '../../services/user/user.service';
 })
 export class CoursesComponent implements OnInit {
 
+    @ViewChildren('reg') regs;
+
     private courses = [];
     private lecturers = [];
     private isLoading = true;
@@ -22,6 +25,7 @@ export class CoursesComponent implements OnInit {
     private course: Course;
     private isEditing = false;
 
+    private currentUser: any;
     private isUserAdmin: boolean;
     private isUserStudent: boolean;
     private isUserLecturer: boolean;
@@ -65,6 +69,7 @@ export class CoursesComponent implements OnInit {
         this.isUserAdmin = this.userService.isUserAnAdmin();
         this.isUserLecturer = this.userService.isUserALecturer();
         this.isUserStudent = this.userService.isUserAStudent();
+        this.currentUser = this.userService.getUserDetails();
     }
 
     private getCourses() {
@@ -126,12 +131,14 @@ export class CoursesComponent implements OnInit {
     }
 
     editCourse(course) {
+        console.log(course);
         this.dataService.editCourse(course).subscribe(
             res => {
                 this.isEditing = false;
                 const i = this.courses.findIndex(localCourse => localCourse._id === course._id);
                 this.courses[i] = res.json();
-                this.toast.setMessage('item edited successfully.', 'success');
+                console.log(this.courses[i]);
+                this.toast.setMessage('Success', 'success');
             },
             error => console.log(error)
         );
@@ -160,7 +167,7 @@ export class CoursesComponent implements OnInit {
             return course.students.map(student => {
                 return student._id;
             }).find(id => {
-                return id === this.userService.getUserDetails()._id;
+                return id === this.currentUser._id;
             });
         }
         return false;
@@ -168,17 +175,82 @@ export class CoursesComponent implements OnInit {
 
     getStyle(course: Course) {
         if (this.isStudentRegistered(course)) {
-            return  'green';
+            return  '#128f76';
         }else {
             return 'inherit';
         }
     }
 
-    registerCourse(course) {
-        console.log('register');
+    updateCourseForStudent(course: Course, i_: number, isReg: boolean) {
+        console.log(course);
+        if (isReg) {
+            this.updateRegButton(i_, false);
+        }else {
+            this.updateUnRegButton(i_, false);
+        }
+        this.dataService.editCourse(course).subscribe(
+            res => {
+                this.isEditing = false;
+                const i = this.courses.findIndex(localCourse => localCourse._id === course._id);
+                this.courses[i] = res.json();
+                console.log(this.courses[i]);
+                this.toast.setMessage('Success', 'success');
+                if (isReg) {
+                    this.updateRegButton(i_, true);
+                }else {
+                    this.updateUnRegButton(i_, true);
+                }
+            },
+            error => {
+                console.log(error);
+                if (isReg) {
+                    this.updateRegButton(i_, true);
+                }else {
+                    this.updateUnRegButton(i_, true);
+                }
+            }
+        );
+        this.resetCourse();
     }
 
-    unregisterCourse(course) {
-        console.log('unregister');
+    registerCourse(course: Course, i: number) {
+        if (this.isStudentRegistered(course)) {
+            this.toast.setMessage('You are already Registered, please contact the administrator', 'error');
+            return;
+        }
+        let student = this.currentUser;
+        this.course = course;
+        this.course.students = this.course.students.map(student_ => {
+            return student_._id;
+        });
+        this.course.students.push(student._id);
+        this.updateCourseForStudent(this.course, i, true);
+    }
+
+    unregisterCourse(course: Course, i: number) {
+        if (!this.isStudentRegistered(course)) {
+            this.toast.setMessage('You were not previously Registered, please contact the administrator', 'error');
+            return;
+        }
+        let student = this.currentUser;
+        let pos = course.students.map(student_ => {
+            return student_._id;
+        }).find(id => {
+            return id === student._id;
+        });
+        course.students.splice(pos, 1);
+        this.updateCourseForStudent(course, i, false);
+    }
+
+    private updateRegButton(i: number, enable: boolean) {
+        this.regs.toArray().find((e) => {
+            return e.nativeElement.getAttribute('id') === 'reg' + i;
+        }).nativeElement.disabled = !enable;
+    }
+
+    private updateUnRegButton(i: number, enable: boolean) {
+        this.regs.toArray().find((e) => {
+            return e.nativeElement.getAttribute('id') === 'reg' + i;
+        }).nativeElement.disabled = !enable;
     }
 }

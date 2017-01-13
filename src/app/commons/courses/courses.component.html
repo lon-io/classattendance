@@ -39,8 +39,8 @@
                         <button class="btn btn-sm btn-danger" (click)="deleteCourse(course)"><em class="fa fa-trash"></em></button>
                     </td>
                     <td *ngIf="isUserStudent" class="actions">
-                        <button *ngIf="!isStudentRegistered(course)" class="btn btn-sm btn-success" (click)="registerCourse(course)"><em class="fa fa-check-square-o"></em></button>
-                        <button *ngIf="isStudentRegistered(course)" class="btn btn-sm btn-danger" (click)="unregisterCourse(course)"><em class="fa fa-trash"></em></button>
+                        <button *ngIf="!isStudentRegistered(course)" #reg id="reg{{i}}" class="btn btn-sm btn-success"  (click)="registerCourse(course, i)"><em class="fa fa-check-square-o"></em></button>
+                        <button *ngIf="isStudentRegistered(course)" #reg id="reg{{i}}" class="btn btn-sm btn-danger"  (click)="unregisterCourse(course, i)"><em class="fa fa-trash"></em></button>
                     </td>
                 </tr>
                 </tbody>
