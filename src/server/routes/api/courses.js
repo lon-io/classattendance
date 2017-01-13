@@ -8,7 +8,6 @@ var Course = require('../../app/models').course;
 // APIs
 // select all
 router.get('/courses', function(req, res) {
-    console.log("Courses called");
     Course.find({})
         .populate('coordinator')
         .populate('students')
@@ -58,10 +57,8 @@ router.get('/course/:id', function(req, res) {
 router.put('/course/:id', function(req, res) {
     Course.findOneAndUpdate({_id: req.params.id}, req.body, {new:true}, function(err, doc) {
         if(err) return console.error(err);
-        console.log(doc)
         Course
             .populate(doc, ['coordinator', 'students'], (err, doc) => {
-                console.log(doc)
                 if(err) return console.error(err);
                 res.status(200).json(doc);
             })

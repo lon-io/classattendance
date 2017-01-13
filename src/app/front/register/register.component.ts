@@ -5,7 +5,7 @@ import { ToastComponent } from '../../shared/toast/toast.component';
 
 import { DataService } from '../../services/data.service';
 
-import { User } from './user.interface';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-register',

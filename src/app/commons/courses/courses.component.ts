@@ -131,13 +131,11 @@ export class CoursesComponent implements OnInit {
     }
 
     editCourse(course) {
-        console.log(course);
         this.dataService.editCourse(course).subscribe(
             res => {
                 this.isEditing = false;
                 const i = this.courses.findIndex(localCourse => localCourse._id === course._id);
                 this.courses[i] = res.json();
-                console.log(this.courses[i]);
                 this.toast.setMessage('Success', 'success');
             },
             error => console.log(error)
@@ -182,7 +180,6 @@ export class CoursesComponent implements OnInit {
     }
 
     updateCourseForStudent(course: Course, i_: number, isReg: boolean) {
-        console.log(course);
         if (isReg) {
             this.updateRegButton(i_, false);
         }else {
@@ -193,7 +190,6 @@ export class CoursesComponent implements OnInit {
                 this.isEditing = false;
                 const i = this.courses.findIndex(localCourse => localCourse._id === course._id);
                 this.courses[i] = res.json();
-                console.log(this.courses[i]);
                 this.toast.setMessage('Success', 'success');
                 if (isReg) {
                     this.updateRegButton(i_, true);

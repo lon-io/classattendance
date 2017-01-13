@@ -35,8 +35,16 @@ export class DataService {
     return this.http.get('/api/lecturers').map(res => res.json());
   }
 
+  deleteLecturer(lecturer: any) {
+    return this.http.delete(`/api/lecturer/${lecturer._id}`, this.options);
+  }
+
   getStudents() {
     return this.http.get('/api/students').map(res => res.json());
+  }
+
+  deleteStudent(student: any) {
+    return this.http.delete(`/api/student/${student._id}`, this.options);
   }
 
   addCourse(course) {
@@ -58,4 +66,6 @@ export class DataService {
   register(user) {
     return this.http.post('/api/register', JSON.stringify(user), this.options);
   }
+
+
 }

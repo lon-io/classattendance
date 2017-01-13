@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastComponent } from '../../shared/toast/toast.component';
 import {UserService} from '../../services/user/user.service';
-import {User} from '../../front/register/user.interface';
+import {User} from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-profile',
