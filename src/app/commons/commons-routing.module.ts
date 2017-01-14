@@ -3,10 +3,14 @@
  */
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CoursesComponent} from './courses/courses.component';
+import {CourseComponent} from './course/course.component';
+import {LecturerComponent} from './lecturer/lecturer.component';
+import {StudentComponent} from './student/student.component';
 
 const commonsRoutes: Routes = [
-    { path: 'courses',  component: CoursesComponent },
+    { path: 'course/:id', component: CourseComponent },
+    { path: 'lecturer/:id', component: LecturerComponent },
+    { path: 'student/:id', component: StudentComponent }
 ];
 
 @NgModule({

@@ -5384,6 +5384,7 @@ function escapeRegExp(s) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_index__ = __webpack_require__(499);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -6198,23 +6199,11 @@ var DataService = (function () {
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
         this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestOptions */]({ headers: this.headers });
     }
-    DataService.prototype.getCats = function () {
-        return this.http.get('/api/cats').map(function (res) { return res.json(); });
-    };
-    DataService.prototype.addCat = function (cat) {
-        return this.http.post('/api/cat', JSON.stringify(cat), this.options);
-    };
-    DataService.prototype.editCat = function (cat) {
-        return this.http.put("/api/cat/" + cat._id, JSON.stringify(cat), this.options);
-    };
-    DataService.prototype.deleteCat = function (cat) {
-        return this.http.delete("/api/cat/" + cat._id, this.options);
-    };
-    DataService.prototype.getCourses = function () {
-        return this.http.get('/api/courses').map(function (res) { return res.json(); });
-    };
     DataService.prototype.getLecturers = function () {
         return this.http.get('/api/lecturers').map(function (res) { return res.json(); });
+    };
+    DataService.prototype.getLecturer = function (lecturer_id) {
+        return this.http.get("/api/lecturer/" + lecturer_id).map(function (res) { return res.json(); });
     };
     DataService.prototype.deleteLecturer = function (lecturer) {
         return this.http.delete("/api/lecturer/" + lecturer._id, this.options);
@@ -6222,11 +6211,20 @@ var DataService = (function () {
     DataService.prototype.getStudents = function () {
         return this.http.get('/api/students').map(function (res) { return res.json(); });
     };
+    DataService.prototype.getStudent = function (student_id) {
+        return this.http.get("/api/student'/" + student_id).map(function (res) { return res.json(); });
+    };
     DataService.prototype.deleteStudent = function (student) {
         return this.http.delete("/api/student/" + student._id, this.options);
     };
     DataService.prototype.addCourse = function (course) {
         return this.http.post('/api/course', JSON.stringify(course), this.options);
+    };
+    DataService.prototype.getCourses = function () {
+        return this.http.get('/api/courses').map(function (res) { return res.json(); });
+    };
+    DataService.prototype.getCourse = function (course_id) {
+        return this.http.get("/api/course/" + course_id).map(function (res) { return res.json(); });
     };
     DataService.prototype.editCourse = function (course) {
         return this.http.put("/api/course/" + course._id, JSON.stringify(course), this.options);
@@ -8983,14 +8981,9 @@ var CoursesComponent = (function () {
             var i = _this.courses.findIndex(function (localCourse) { return localCourse._id === course._id; });
             _this.courses[i] = res.json();
             _this.toast.setMessage('Success', 'success');
-            if (isReg) {
-                _this.updateRegButton(i_, true);
-            }
-            else {
-                _this.updateUnRegButton(i_, true);
-            }
         }, function (error) {
             console.log(error);
+        }, function () {
             if (isReg) {
                 _this.updateRegButton(i_, true);
             }
@@ -20040,6 +20033,9 @@ var RouterOutletMap = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__global_global_module__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__commons_routing_module__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__course_course_component__ = __webpack_require__(737);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lecturer_lecturer_component__ = __webpack_require__(740);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__student_student_component__ = __webpack_require__(743);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CommonsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20050,6 +20046,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
+
 
 
 
@@ -20069,7 +20068,10 @@ var CommonsModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_5__commons_routing_module__["a" /* CommonsRoutingModule */]
             ],
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__["a" /* CoursesComponent */]
+                __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__["a" /* CoursesComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__course_course_component__["a" /* CourseComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__lecturer_lecturer_component__["a" /* LecturerComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__student_student_component__["a" /* StudentComponent */]
             ],
             exports: [
                 __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__["a" /* CoursesComponent */]
@@ -57880,7 +57882,7 @@ function compare(path, params, segment) {
 /* unused harmony reexport PreloadAllModules */
 /* unused harmony reexport PreloadingStrategy */
 /* unused harmony reexport NoPreloading */
-/* unused harmony reexport ActivatedRoute */
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__router_state__["b"]; });
 /* unused harmony reexport ActivatedRouteSnapshot */
 /* unused harmony reexport RouterState */
 /* unused harmony reexport RouterStateSnapshot */
@@ -58433,7 +58435,9 @@ var AppModule = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__course_course_component__ = __webpack_require__(737);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lecturer_lecturer_component__ = __webpack_require__(740);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__student_student_component__ = __webpack_require__(743);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CommonsRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58447,8 +58451,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var commonsRoutes = [
-    { path: 'courses', component: __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__["a" /* CoursesComponent */] },
+    { path: 'course/:id', component: __WEBPACK_IMPORTED_MODULE_2__course_course_component__["a" /* CourseComponent */] },
+    { path: 'lecturer/:id', component: __WEBPACK_IMPORTED_MODULE_3__lecturer_lecturer_component__["a" /* LecturerComponent */] },
+    { path: 'student/:id', component: __WEBPACK_IMPORTED_MODULE_4__student_student_component__["a" /* StudentComponent */] }
 ];
 var CommonsRoutingModule = (function () {
     function CommonsRoutingModule() {
@@ -61996,13 +62004,13 @@ module.exports = "<nav class=\"navbar navbar-full navbar-dark navbar-custom\">\n
 /* 693 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"container\">\n  <div class=\"card\" *ngIf=\"!isLoading\">\n    <h4 class=\"card-header\">All lecturers ({{lecturers.length}})</h4>\n    <div class=\"card-block\">\n      <table class=\"table table-bordered table-hover table-responsive\">\n        <thead class=\"thead-inverse\">\n        <tr>\n          <th>Fullname</th>\n          <th>Email</th>\n          <th>Specialization</th>\n          <th>Courses</th>\n          <th class=\"actions\" *ngIf=\"isUserAdmin\">Actions</th>\n        </tr>\n        </thead>\n        <tbody *ngIf=\"lecturers.length === 0\">\n        <tr>\n          <td colspan=\"3\">There are no lecturers in the DB</td>\n        </tr>\n        </tbody>\n        <tbody *ngIf=\"!isEditing\">\n        <tr *ngFor=\"let lecturer of lecturers; let i = index\">\n          <td>{{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.middle}} {{lecturer?.name?.last}}</td>\n          <td>{{lecturer.email}}</td>\n          <td>{{lecturer.specialization}}</td>\n          <td><small *ngFor=\"let course of lecturer?.courses\">{{course.code}} </small></td>\n          <td *ngIf=\"isUserAdmin\" class=\"actions\">\n            <button #del id=\"del{{i}}\" class=\"btn btn-sm btn-success\"  (click)=\"deleteLecturer(lecturer, i)\"><em class=\"fa fa-trash\"></em></button>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"container\">\n  <div class=\"card\" *ngIf=\"!isLoading\">\n    <h4 class=\"card-header\">All lecturers ({{lecturers.length}})</h4>\n    <div class=\"card-block\">\n      <table class=\"table table-bordered table-hover table-responsive\">\n        <thead class=\"thead-inverse\">\n        <tr>\n          <th>Fullname</th>\n          <th>Email</th>\n          <th>Specialization</th>\n          <th>Courses</th>\n          <th class=\"actions\" *ngIf=\"isUserAdmin\">Actions</th>\n        </tr>\n        </thead>\n        <tbody *ngIf=\"lecturers.length === 0\">\n        <tr>\n          <td colspan=\"3\">There are no lecturers in the DB</td>\n        </tr>\n        </tbody>\n        <tbody *ngIf=\"!isEditing\">\n        <tr *ngFor=\"let lecturer of lecturers; let i = index\">\n          <td><a [routerLink]=\"['/lecturer', lecturer?._id]\">{{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.middle}} {{lecturer?.name?.last}}</a>\n            </td>\n          <td>{{lecturer.email}}</td>\n          <td>{{lecturer.specialization}}</td>\n          <td><small *ngFor=\"let course of lecturer?.courses\"><a [routerLink]=\"['/course',course._id]\">{{course.code}}</a> </small></td>\n          <td *ngIf=\"isUserAdmin\" class=\"actions\">\n            <button #del id=\"del{{i}}\" class=\"btn btn-sm btn-success\"  (click)=\"deleteLecturer(lecturer, i)\"><em class=\"fa fa-trash\"></em></button>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>"
 
 /***/ },
 /* 694 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"container\">\n  <div class=\"card\" *ngIf=\"!isLoading\">\n    <h4 class=\"card-header\">All students ({{students.length}})</h4>\n    <div class=\"card-block\">\n      <table class=\"table table-bordered table-hover table-responsive\">\n        <thead class=\"thead-inverse\">\n        <tr>\n          <th>Fullname</th>\n          <th>Email</th>\n          <th>Matric Number</th>\n          <th>RFID UID</th>\n          <th>Level</th>\n          <th>Courses</th>\n          <th class=\"actions\" *ngIf=\"isUserAdmin\">Actions</th>\n        </tr>\n        </thead>\n        <tbody *ngIf=\"students.length === 0\">\n        <tr>\n          <td colspan=\"3\">There are no students in the DB</td>\n        </tr>\n        </tbody>\n        <tbody *ngIf=\"!isEditing\">\n        <tr *ngFor=\"let student of students; let i = index\">\n          <td>{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</td>\n          <td>{{student?.email}}</td>\n          <td>{{student?.matric_no}}</td>\n          <td>{{student?.rfid_uid}}</td>\n          <td>{{student?.level}}</td>\n          <td><small *ngFor=\"let course of student?.courses\">{{course.code}} </small></td>\n          <td *ngIf=\"isUserAdmin\" class=\"actions\">\n            <button #del id=\"del{{i}}\" class=\"btn btn-sm btn-success\"  (click)=\"deleteStudent(student, i)\"><em class=\"fa fa-trash\"></em></button>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"container\">\n  <div class=\"card\" *ngIf=\"!isLoading\">\n    <h4 class=\"card-header\">All students ({{students.length}})</h4>\n    <div class=\"card-block\">\n      <table class=\"table table-bordered table-hover table-responsive\">\n        <thead class=\"thead-inverse\">\n        <tr>\n          <th>Fullname</th>\n          <th>Email</th>\n          <th>Matric Number</th>\n          <th>RFID UID</th>\n          <th>Level</th>\n          <th>Courses</th>\n          <th class=\"actions\" *ngIf=\"isUserAdmin\">Actions</th>\n        </tr>\n        </thead>\n        <tbody *ngIf=\"students.length === 0\">\n        <tr>\n          <td colspan=\"3\">There are no students in the DB</td>\n        </tr>\n        </tbody>\n        <tbody *ngIf=\"!isEditing\">\n        <tr *ngFor=\"let student of students; let i = index\">\n          <td><a [routerLink]=\"['/student', student?._id]\">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a></td>\n          <td>{{student?.email}}</td>\n          <td>{{student?.matric_no}}</td>\n          <td>{{student?.rfid_uid}}</td>\n          <td>{{student?.level}}</td>\n          <td><small *ngFor=\"let course of student?.courses\"><a [routerLink]=\"['/course',course._id]\">{{course.code}}</a> </small></td>\n          <td *ngIf=\"isUserAdmin\" class=\"actions\">\n            <button #del id=\"del{{i}}\" class=\"btn btn-sm btn-success\"  (click)=\"deleteStudent(student, i)\"><em class=\"fa fa-trash\"></em></button>\n          </td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n</div>"
 
 /***/ },
 /* 695 */
@@ -62014,7 +62022,7 @@ module.exports = "<!--<div class=\"container\">-->\n\n<!--&lt;!&ndash; .navbar &
 /* 696 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n    <h4 class=\"card-header\">Loading...</h4>\n    <div class=\"card-block text-xs-center\">\n        <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n    </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"container\">\n    <div class=\"card\" *ngIf=\"!isLoading\">\n        <h4 class=\"card-header\">All courses ({{courses.length}})</h4>\n        <div class=\"card-block\">\n            <table class=\"table table-bordered table-hover table-responsive\">\n                <thead class=\"thead-inverse\">\n                <tr>\n                    <th>Title</th>\n                    <th>Code</th>\n                    <th>Units</th>\n                    <th>Description</th>\n                    <th>Coordinator</th>\n                    <th class=\"actions\" *ngIf=\"isUserAdmin || isUserStudent\">Actions</th>\n                </tr>\n                </thead>\n                <tbody *ngIf=\"courses.length === 0\">\n                <tr>\n                    <td colspan=\"3\">There are no courses in the DB. Add a new course below.</td>\n                </tr>\n                </tbody>\n                <tbody *ngIf=\"!isEditing\">\n                <tr *ngFor=\"let course of courses; let i = index\" [style.background-color]=\"getStyle(course)\">\n                    <td>{{course.title}}</td>\n                    <td>{{course.code}}</td>\n                    <td>{{course.units}}</td>\n                    <td>{{course?.about?.bio}}</td>\n                    <td>{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</td>\n                    <td *ngIf=\"isUserAdmin\" class=\"actions\">\n                        <button class=\"btn btn-sm btn-warning\" (click)=\"enableEditing(course)\"><em class=\"fa fa-pencil\"></em></button>\n                        <button class=\"btn btn-sm btn-danger\" (click)=\"deleteCourse(course)\"><em class=\"fa fa-trash\"></em></button>\n                    </td>\n                    <td *ngIf=\"isUserStudent\" class=\"actions\">\n                        <button *ngIf=\"!isStudentRegistered(course)\" #reg id=\"reg{{i}}\" class=\"btn btn-sm btn-success\"  (click)=\"registerCourse(course, i)\"><em class=\"fa fa-check-square-o\"></em></button>\n                        <button *ngIf=\"isStudentRegistered(course)\" #reg id=\"reg{{i}}\" class=\"btn btn-sm btn-danger\"  (click)=\"unregisterCourse(course, i)\"><em class=\"fa fa-trash\"></em></button>\n                    </td>\n                </tr>\n                </tbody>\n                <tbody *ngIf=\"isUserAdmin && isEditing\">\n                <tr>\n                    <td colspan=\"4\">\n                        <form class=\"form-inline\" #form=\"ngForm\" (ngSubmit)=\"editCourse(course)\" style=\"display:inline\">\n                            <div class=\"form-group\">\n                                <input class=\"form-control\" type=\"text\" name=\"title\" [(ngModel)]=\"course.title\" placeholder=\"Title\" required>\n                            </div>\n                            <div class=\"form-group\">\n                                <input class=\"form-control\" type=\"text\" name=\"code\" [(ngModel)]=\"course.code\" placeholder=\"Code\" required>\n                            </div>\n                            <div class=\"form-group\">\n                                <input class=\"form-control\" type=\"number\" name=\"units\" [(ngModel)]=\"course.units\" placeholder=\"Units\" min=\"1\" step=\"1\" max=\"5\" required>\n                            </div>\n                            <div class=\"form-group\" >\n                                <select name=\"coordinator\" [(ngModel)]=\"course.coordinator\"  required>\n                                    <option *ngFor=\"let lecturer of lecturers\" [ngValue]=\"lecturer._id\">\n                                        {{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.last}}\n                                    </option>\n                                </select>\n                            </div>\n                            <div class=\"form-group\">\n                                <textarea class=\"form-control\" name=\"about\" [(ngModel)]=\"course.about.bio\" placeholder=\"Short Description\" required></textarea>\n                            </div>\n                            <button class=\"btn btn-sm btn-primary\" type=\"submit\" [disabled]=\"!form.form.valid\"><i class=\"fa fa-floppy-o\"></i> Save</button>\n                            <!--<div class=\"col-sm-12\" style=\"margin-top: 20px\" *ngIf=\"form\">-->\n                            <!--<div>Form details:-</div>-->\n                            <!--<pre>Is form valid?: <br>{{form.valid | json}}</pre>-->\n                            <!--<pre>Is form submitted?: <br>{{form.submitted | json}}</pre>-->\n                            <!--<pre>submitted value: <br>{{form.value | json}}</pre>-->\n                            <!--</div>-->\n                        </form>\n                        <button class=\"btn btn-sm btn-warning\" (click)=\"cancelEditing()\"><i class=\"fa fa-times\"></i> Cancel</button>\n                    </td>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n\n    <div class=\"card\" *ngIf=\"!isLoading && isUserAdmin && !isEditing\">\n        <h4 class=\"card-header\">Add new course</h4>\n        <div class=\"card-block\">\n            <form class=\"form-inline\" [formGroup]=\"addCourseForm\" (ngSubmit)=\"addCourse()\" style=\"text-align:center\">\n                <div class=\"form-group\">\n                    <input class=\"form-control\" type=\"text\" name=\"title\" formControlName=\"title\" placeholder=\"Title\">\n                </div>\n                <div class=\"form-group\">\n                    <input class=\"form-control\" type=\"text\" name=\"code\" formControlName=\"code\" placeholder=\"Code\" required>\n                </div>\n                <div class=\"form-group\">\n                    <input class=\"form-control\" type=\"number\" name=\"units\" formControlName=\"units\" placeholder=\"Units\" min=\"1\" step=\"1\" max=\"5\" required>\n                </div>\n                <div class=\"form-group\">\n                    <select class=\"form-control\" id=\"coordinator\" name=\"coordinator\" formControlName=\"coordinator\"  required>\n                        <option *ngFor=\"let lecturer of lecturers\" [value]=\"lecturer._id\">\n                            {{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.last}}\n                        </option>\n                    </select>\n                </div>\n                <div class=\"form-group\">\n                    <textarea class=\"form-control\" name=\"about\" formControlName=\"bio\" placeholder=\"Short Description\" required></textarea>\n                </div>\n                <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!addCourseForm.valid\"><i class=\"fa fa-floppy-o\"></i> Add</button>\n                <!--<div class=\"col-sm-12\" style=\"margin-top: 20px\" *ngIf=\"addCourseForm\">-->\n                <!--<div>Form details:-</div>-->\n                <!--<pre>Is form valid?: <br>{{addCourseForm.valid | json}}</pre>-->\n                <!--<pre>Is form submitted?: <br>{{addCourseForm.submitted | json}}</pre>-->\n                <!--<pre>submitted value: <br>{{addCourseForm.value | json}}</pre>-->\n                <!--</div>-->\n            </form>\n        </div>\n    </div>\n</div>\n\n\n"
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n    <h4 class=\"card-header\">Loading...</h4>\n    <div class=\"card-block text-xs-center\">\n        <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n    </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<div class=\"container\">\n    <div class=\"card\" *ngIf=\"!isLoading\">\n        <h4 class=\"card-header\">All courses ({{courses.length}})</h4>\n        <div class=\"card-block\">\n            <table class=\"table table-bordered table-hover table-responsive\">\n                <thead class=\"thead-inverse\">\n                <tr>\n                    <th>Title</th>\n                    <th>Code</th>\n                    <th>Units</th>\n                    <th>Description</th>\n                    <th>Coordinator</th>\n                    <th class=\"actions\" *ngIf=\"isUserAdmin || isUserStudent\">Actions</th>\n                </tr>\n                </thead>\n                <tbody *ngIf=\"courses.length === 0\">\n                <tr>\n                    <td colspan=\"3\">There are no courses in the DB. Add a new course below.</td>\n                </tr>\n                </tbody>\n                <tbody *ngIf=\"!isEditing\">\n                <tr *ngFor=\"let course of courses; let i = index\" [style.background-color]=\"getStyle(course)\">\n                    <td><a [routerLink]=\"['/course',course._id]\">{{course.title}}</a></td>\n                    <td>{{course.code}}</td>\n                    <td>{{course.units}}</td>\n                    <td>{{course?.about?.bio}}</td>\n                    <td><a [routerLink]=\"['/lecturer',course?.coordinator?._id]\">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>\n                    <td *ngIf=\"isUserAdmin\" class=\"actions\">\n                        <button class=\"btn btn-sm btn-warning\" (click)=\"enableEditing(course)\"><em class=\"fa fa-pencil\"></em></button>\n                        <button class=\"btn btn-sm btn-danger\" (click)=\"deleteCourse(course)\"><em class=\"fa fa-trash\"></em></button>\n                    </td>\n                    <td *ngIf=\"isUserStudent\" class=\"actions\">\n                        <button *ngIf=\"!isStudentRegistered(course)\" #reg id=\"reg{{i}}\" class=\"btn btn-sm btn-success\"  (click)=\"registerCourse(course, i)\"><em class=\"fa fa-check-square-o\"></em></button>\n                        <button *ngIf=\"isStudentRegistered(course)\" #reg id=\"reg{{i}}\" class=\"btn btn-sm btn-danger\"  (click)=\"unregisterCourse(course, i)\"><em class=\"fa fa-trash\"></em></button>\n                    </td>\n                </tr>\n                </tbody>\n                <tbody *ngIf=\"isUserAdmin && isEditing\">\n                <tr>\n                    <td colspan=\"4\">\n                        <form class=\"form-inline\" #form=\"ngForm\" (ngSubmit)=\"editCourse(course)\" style=\"display:inline\">\n                            <div class=\"form-group\">\n                                <input class=\"form-control\" type=\"text\" name=\"title\" [(ngModel)]=\"course.title\" placeholder=\"Title\" required>\n                            </div>\n                            <div class=\"form-group\">\n                                <input class=\"form-control\" type=\"text\" name=\"code\" [(ngModel)]=\"course.code\" placeholder=\"Code\" required>\n                            </div>\n                            <div class=\"form-group\">\n                                <input class=\"form-control\" type=\"number\" name=\"units\" [(ngModel)]=\"course.units\" placeholder=\"Units\" min=\"1\" step=\"1\" max=\"5\" required>\n                            </div>\n                            <div class=\"form-group\" >\n                                <select name=\"coordinator\" [(ngModel)]=\"course.coordinator\"  required>\n                                    <option *ngFor=\"let lecturer of lecturers\" [ngValue]=\"lecturer._id\">\n                                        {{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.last}}\n                                    </option>\n                                </select>\n                            </div>\n                            <div class=\"form-group\">\n                                <textarea class=\"form-control\" name=\"about\" [(ngModel)]=\"course.about.bio\" placeholder=\"Short Description\" required></textarea>\n                            </div>\n                            <button class=\"btn btn-sm btn-primary\" type=\"submit\" [disabled]=\"!form.form.valid\"><i class=\"fa fa-floppy-o\"></i> Save</button>\n                            <!--<div class=\"col-sm-12\" style=\"margin-top: 20px\" *ngIf=\"form\">-->\n                            <!--<div>Form details:-</div>-->\n                            <!--<pre>Is form valid?: <br>{{form.valid | json}}</pre>-->\n                            <!--<pre>Is form submitted?: <br>{{form.submitted | json}}</pre>-->\n                            <!--<pre>submitted value: <br>{{form.value | json}}</pre>-->\n                            <!--</div>-->\n                        </form>\n                        <button class=\"btn btn-sm btn-warning\" (click)=\"cancelEditing()\"><i class=\"fa fa-times\"></i> Cancel</button>\n                    </td>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n\n    <div class=\"card\" *ngIf=\"!isLoading && isUserAdmin && !isEditing\">\n        <h4 class=\"card-header\">Add new course</h4>\n        <div class=\"card-block\">\n            <form class=\"form-inline\" [formGroup]=\"addCourseForm\" (ngSubmit)=\"addCourse()\" style=\"text-align:center\">\n                <div class=\"form-group\">\n                    <input class=\"form-control\" type=\"text\" name=\"title\" formControlName=\"title\" placeholder=\"Title\">\n                </div>\n                <div class=\"form-group\">\n                    <input class=\"form-control\" type=\"text\" name=\"code\" formControlName=\"code\" placeholder=\"Code\" required>\n                </div>\n                <div class=\"form-group\">\n                    <input class=\"form-control\" type=\"number\" name=\"units\" formControlName=\"units\" placeholder=\"Units\" min=\"1\" step=\"1\" max=\"5\" required>\n                </div>\n                <div class=\"form-group\">\n                    <select class=\"form-control\" id=\"coordinator\" name=\"coordinator\" formControlName=\"coordinator\"  required>\n                        <option *ngFor=\"let lecturer of lecturers\" [value]=\"lecturer._id\">\n                            {{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.last}}\n                        </option>\n                    </select>\n                </div>\n                <div class=\"form-group\">\n                    <textarea class=\"form-control\" name=\"about\" formControlName=\"bio\" placeholder=\"Short Description\" required></textarea>\n                </div>\n                <button class=\"btn btn-primary\" type=\"submit\" [disabled]=\"!addCourseForm.valid\"><i class=\"fa fa-floppy-o\"></i> Add</button>\n                <!--<div class=\"col-sm-12\" style=\"margin-top: 20px\" *ngIf=\"addCourseForm\">-->\n                <!--<div>Form details:-</div>-->\n                <!--<pre>Is form valid?: <br>{{addCourseForm.valid | json}}</pre>-->\n                <!--<pre>Is form submitted?: <br>{{addCourseForm.submitted | json}}</pre>-->\n                <!--<pre>submitted value: <br>{{addCourseForm.value | json}}</pre>-->\n                <!--</div>-->\n            </form>\n        </div>\n    </div>\n</div>\n\n\n"
 
 /***/ },
 /* 697 */
@@ -65469,6 +65477,171 @@ if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment *
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app___["a" /* AppModule */]);
 
+
+/***/ },
+/* 737 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__ = __webpack_require__(26);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CourseComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var CourseComponent = (function () {
+    function CourseComponent(toast, dataService, userService, route) {
+        this.toast = toast;
+        this.dataService = dataService;
+        this.userService = userService;
+        this.route = route;
+    }
+    CourseComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this.route.params.subscribe(function (params) {
+            // this.course_id = +params['id']; // (+) converts string 'id' to a number
+            _this.course_id = params['id']; // (+) converts string 'id' to a number
+            // Dispatch action to load the compoonent data.
+            _this.getCourse();
+        });
+    };
+    CourseComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+    };
+    CourseComponent.prototype.getCourse = function () {
+        var _this = this;
+        this.dataService.getCourse(this.course_id).subscribe(function (data) { _this.course = data; }, function (error) { return console.log(error); }, function () { return _this.isLoading = false; });
+    };
+    CourseComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
+            selector: 'app-course',
+            template: __webpack_require__(739),
+            styles: [__webpack_require__(738)]
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__["a" /* UserService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__["a" /* UserService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */]) === 'function' && _d) || Object])
+    ], CourseComponent);
+    return CourseComponent;
+    var _a, _b, _c, _d;
+}());
+
+
+/***/ },
+/* 738 */
+/***/ function(module, exports) {
+
+module.exports = ""
+
+/***/ },
+/* 739 */
+/***/ function(module, exports) {
+
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<nav *ngIf=\"!isLoading\" class=\"navbar navbar-full navbar-dark navbar-custom\">\n  <button class=\"navbar-toggler hidden-lg-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#mainNavbarCollapse\">\n    &#9776;\n  </button>\n  <a routerLink=\"/home\" class=\"navbar-brand\">\n    Class Attendance System\n  </a>\n  <div class=\"collapse navbar-toggleable-md\" id=\"mainNavbarCollapse\">\n    <ul class=\"nav navbar-nav\">\n      <li class=\"nav-item\">\n        <a routerLink=\"/home\" class=\"nav-link\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" >Home</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAnAdmin()\">\n        <a routerLink=\"/admin\" class=\"nav-link\" routerLinkActive=\"active\">\n          Admin\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserALecturer()\">\n        <a routerLink=\"/lecturer\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAStudent()\">\n        <a routerLink=\"/student\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" >\n        <a [routerLink]=\"['/course',course_id]\" class=\"nav-link\" routerLinkActive=\"active\">\n          {{course?.code}}\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<p *ngIf=\"!isLoading\">\n  course works!\n</p>\n"
+
+/***/ },
+/* 740 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LecturerComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LecturerComponent = (function () {
+    function LecturerComponent() {
+    }
+    LecturerComponent.prototype.ngOnInit = function () {
+    };
+    LecturerComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
+            selector: 'app-lecturer',
+            template: __webpack_require__(742),
+            styles: [__webpack_require__(741)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], LecturerComponent);
+    return LecturerComponent;
+}());
+
+
+/***/ },
+/* 741 */
+/***/ function(module, exports) {
+
+module.exports = ""
+
+/***/ },
+/* 742 */
+/***/ function(module, exports) {
+
+module.exports = "<p>\n  lecturer works!\n</p>\n"
+
+/***/ },
+/* 743 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return StudentComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var StudentComponent = (function () {
+    function StudentComponent() {
+    }
+    StudentComponent.prototype.ngOnInit = function () {
+    };
+    StudentComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
+            selector: 'app-student',
+            template: __webpack_require__(745),
+            styles: [__webpack_require__(744)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], StudentComponent);
+    return StudentComponent;
+}());
+
+
+/***/ },
+/* 744 */
+/***/ function(module, exports) {
+
+module.exports = ""
+
+/***/ },
+/* 745 */
+/***/ function(module, exports) {
+
+module.exports = "<p>\n  student works!\n</p>\n"
 
 /***/ }
 ],[733]);

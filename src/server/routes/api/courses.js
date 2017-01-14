@@ -47,9 +47,10 @@ router.post('/course', function(req, res) {
 
 // find by id
 router.get('/course/:id', function(req, res) {
+    console.log("here");
     Course.findOne({_id: req.params.id}, function(err, obj) {
         if(err) return console.error(err);
-        res.json(obj);
+        return res.json(obj);
     })
 });
 

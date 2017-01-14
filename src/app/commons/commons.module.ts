@@ -4,6 +4,9 @@ import {CoursesComponent} from './courses/courses.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GlobalModule} from '../global/global.module';
 import {CommonsRoutingModule} from './commons-routing.module';
+import { CourseComponent } from './course/course.component';
+import { LecturerComponent } from './lecturer/lecturer.component';
+import { StudentComponent } from './student/student.component';
 
 @NgModule({
     imports: [
@@ -14,7 +17,10 @@ import {CommonsRoutingModule} from './commons-routing.module';
         CommonsRoutingModule
     ],
     declarations: [
-        CoursesComponent
+        CoursesComponent,
+        CourseComponent,
+        LecturerComponent,
+        StudentComponent
     ],
     exports: [
         CoursesComponent

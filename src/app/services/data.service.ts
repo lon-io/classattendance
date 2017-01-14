@@ -6,66 +6,62 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
 
-  private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
-  private options = new RequestOptions({ headers: this.headers });
+    private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
+    private options = new RequestOptions({ headers: this.headers });
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
-  getCats() {
-    return this.http.get('/api/cats').map(res => res.json());
-  }
+    getLecturers() {
+        return this.http.get('/api/lecturers').map(res => res.json());
+    }
 
-  addCat(cat) {
-    return this.http.post('/api/cat', JSON.stringify(cat), this.options);
-  }
+    getLecturer(lecturer_id) {
+        return this.http.get(`/api/lecturer/${lecturer_id}`).map(res => res.json());
+    }
 
-  editCat(cat) {
-    return this.http.put(`/api/cat/${cat._id}`, JSON.stringify(cat), this.options);
-  }
+    deleteLecturer(lecturer: any) {
+        return this.http.delete(`/api/lecturer/${lecturer._id}`, this.options);
+    }
 
-  deleteCat(cat) {
-    return this.http.delete(`/api/cat/${cat._id}`, this.options);
-  }
+    getStudents() {
+        return this.http.get('/api/students').map(res => res.json());
+    }
 
-  getCourses() {
-    return this.http.get('/api/courses').map(res => res.json());
-  }
+    getStudent(student_id) {
+        return this.http.get(`/api/student'/${student_id}`).map(res => res.json());
+    }
 
-  getLecturers() {
-    return this.http.get('/api/lecturers').map(res => res.json());
-  }
+    deleteStudent(student: any) {
+        return this.http.delete(`/api/student/${student._id}`, this.options);
+    }
 
-  deleteLecturer(lecturer: any) {
-    return this.http.delete(`/api/lecturer/${lecturer._id}`, this.options);
-  }
+    addCourse(course) {
+        return this.http.post('/api/course', JSON.stringify(course), this.options);
+    }
 
-  getStudents() {
-    return this.http.get('/api/students').map(res => res.json());
-  }
+    getCourses() {
+        return this.http.get('/api/courses').map(res => res.json());
+    }
 
-  deleteStudent(student: any) {
-    return this.http.delete(`/api/student/${student._id}`, this.options);
-  }
+    getCourse(course_id) {
+        return this.http.get(`/api/course/${course_id}`).map(res => res.json());
+    }
 
-  addCourse(course) {
-    return this.http.post('/api/course', JSON.stringify(course), this.options);
-  }
+    editCourse(course) {
+        return this.http.put(`/api/course/${course._id}`, JSON.stringify(course), this.options);
+    }
 
-  editCourse(course) {
-    return this.http.put(`/api/course/${course._id}`, JSON.stringify(course), this.options);
-  }
+    deleteCourse(course) {
+        return this.http.delete(`/api/course/${course._id}`, this.options);
+    }
 
-  deleteCourse(course) {
-    return this.http.delete(`/api/course/${course._id}`, this.options);
-  }
+    login(user) {
+        return this.http.post('/api/login', JSON.stringify(user), this.options);
+    }
 
-  login(user) {
-    return this.http.post('/api/login', JSON.stringify(user), this.options);
-  }
-
-  register(user) {
-    return this.http.post('/api/register', JSON.stringify(user), this.options);
-  }
+    register(user) {
+        return this.http.post('/api/register', JSON.stringify(user), this.options);
+    }
 
 
 }

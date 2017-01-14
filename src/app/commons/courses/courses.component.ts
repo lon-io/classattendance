@@ -191,14 +191,11 @@ export class CoursesComponent implements OnInit {
                 const i = this.courses.findIndex(localCourse => localCourse._id === course._id);
                 this.courses[i] = res.json();
                 this.toast.setMessage('Success', 'success');
-                if (isReg) {
-                    this.updateRegButton(i_, true);
-                }else {
-                    this.updateUnRegButton(i_, true);
-                }
             },
             error => {
                 console.log(error);
+            },
+            () => {
                 if (isReg) {
                     this.updateRegButton(i_, true);
                 }else {

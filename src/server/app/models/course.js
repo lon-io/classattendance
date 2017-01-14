@@ -8,6 +8,7 @@ var ObjectId = Schema.Types.ObjectId;
 var CourseSchema = mongoose.Schema({
     title: String,
     code: String,
+    level: String,
     units:  { type: Number, min: 1, max: 5 },
     about: {page: {raw: String, html: String}, bio: String},
     coordinator:{type: ObjectId, ref: 'user'},
