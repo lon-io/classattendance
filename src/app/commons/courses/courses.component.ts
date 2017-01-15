@@ -34,6 +34,7 @@ export class CoursesComponent implements OnInit {
     private title = new FormControl('', Validators.required);
     private code = new FormControl('', Validators.required);
     private units = new FormControl('', Validators.required);
+    private level = new FormControl('', Validators.required);
     private bio = new FormControl('', Validators.required);
     private coordinator = new FormControl('', Validators.required);
 
@@ -54,6 +55,7 @@ export class CoursesComponent implements OnInit {
             title: '',
             code: '',
             units: 1,
+            level: 100,
             about: { page: { raw: '', html: '' }, bio: ''},
             coordinator: {}
         };
@@ -62,6 +64,7 @@ export class CoursesComponent implements OnInit {
             title: this.title,
             code: this.code,
             units: this.units,
+            level: this.level,
             bio: this.bio,
             coordinator: this.coordinator
         });
@@ -93,6 +96,7 @@ export class CoursesComponent implements OnInit {
         this.course.title = this.addCourseForm.value.title;
         this.course.code = this.addCourseForm.value.code;
         this.course.units = this.addCourseForm.value.units;
+        this.course.level = this.addCourseForm.value.level;
         this.course.about.bio = this.addCourseForm.value.bio;
         this.course.coordinator = this.addCourseForm.value.coordinator;
         this.dataService.addCourse(this.course).subscribe(
@@ -112,6 +116,7 @@ export class CoursesComponent implements OnInit {
             title: '',
             code: '',
             units: 1,
+            level: 100,
             about: { page: { raw: '', html: '' }, bio: ''},
             coordinator: {}
         };

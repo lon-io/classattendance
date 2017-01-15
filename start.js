@@ -36,5 +36,5 @@ if (cluster.isMaster) {
     });
   }
 } else {
-  require('./src/server/app.js');
+  require('./src/server/app.js'); // replace this with your server directory
 }

@@ -30,6 +30,24 @@ router.get('/students', function(req, res) {
         });
 });
 
+// find by id
+router.get('/student/:id', function(req, res) {
+    Students.findOne({_id: req.params.id})
+        .lean()
+        .exec()
+        .then(doc => {
+            Courses.find({students: doc._id})
+                .exec()
+                .then(courses => {
+                    doc.courses = courses;
+                    return res.json(doc)
+                });
+        })
+        .catch(err => {
+            return console.error(err);
+        })
+});
+
 router.get('/lecturers', function(req, res) {
     Lecturers.find({})
         .lean()
@@ -49,6 +67,24 @@ router.get('/lecturers', function(req, res) {
         .catch(err => {
             return console.error(err)
         });
+});
+
+// find by id
+router.get('/lecturer/:id', function(req, res) {
+    Lecturers.findOne({_id: req.params.id})
+        .lean()
+        .exec()
+        .then(doc => {
+            Courses.find({coordint: doc._id})
+                .exec()
+                .then(courses => {
+                    doc.courses = courses;
+                    return res.json(doc)
+                });
+        })
+        .catch(err => {
+            return console.error(err);
+        })
 });
 
 module.exports = router;

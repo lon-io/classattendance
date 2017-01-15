@@ -13,6 +13,7 @@ function AbstractUserSchema() {
     this.add({
         email: {type: String, lowercase: true, trim: true, validate: validEmail.validateEmail}
         ,role: {type: ObjectId, ref: 'role'}
+        , gender: {type: String}
         , name: {first: String, middle: String, last: String}
         , about: {page: {raw: String, html: String}, bio: String}
         , salt: {type: String, required: true}

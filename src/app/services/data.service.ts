@@ -28,7 +28,7 @@ export class DataService {
     }
 
     getStudent(student_id) {
-        return this.http.get(`/api/student'/${student_id}`).map(res => res.json());
+        return this.http.get(`/api/student/${student_id}`).map(res => res.json());
     }
 
     deleteStudent(student: any) {

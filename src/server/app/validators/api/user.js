@@ -17,6 +17,7 @@ var validateUser = function(req, callback) {
     req.checkBody('lastname', 'Lastname is required').notEmpty();
     req.checkBody('middlename', 'Middlename is required').notEmpty();
     req.checkBody('role', 'Role is required').notEmpty();
+    req.checkBody('gender', 'Gender is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
 
     // check the validation object for errors

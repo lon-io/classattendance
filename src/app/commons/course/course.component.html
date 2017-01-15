@@ -43,6 +43,53 @@
   </div>
 </nav>
 
-<p *ngIf="!isLoading">
-  course works!
-</p>
+<div *ngIf="!isLoading" class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad" >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{course?.title}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3" align="center"> <img alt="Course Avatar" [src]="course?.grav_url" class="img-circle img-responsive"> </div>
+            <!--<div class="col-md-3" align="center"> <span class="fa fa-"> </div>-->
+            <div class=" col-md-9">
+              <table class="table table-course-information">
+                <tbody>
+                <tr>
+                  <td>Code:</td>
+                  <td>{{course?.code}}</td>
+                </tr>
+                <tr>
+                  <td>About</td>
+                  <td>{{course?.about?.bio}}</td>
+                </tr>
+                <tr>
+                  <td>Units</td>
+                  <td>{{course?.units}}</td>
+                </tr>
+                <tr>
+                  <td>Level</td>
+                  <td>{{course?.level}}</td>
+                </tr>
+                <tr>
+                  <td>Coordinator</td>
+                  <td><a [routerLink]="['/lecturer', course?.coordinator?._id]">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>
+                </tr>
+                <tr>
+                  <td>Registered Students</td>
+                  <td><small *ngFor="let student of course?.students"><a [routerLink]="['/student', student?._id]">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a> </small></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

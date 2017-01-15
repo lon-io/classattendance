@@ -15,7 +15,7 @@ export class CourseComponent implements OnInit, OnDestroy {
     course: Course;
     course_id;
     private sub: any;
-    isLoading: boolean;
+    isLoading: boolean = true;
 
     constructor(
         private toast: ToastComponent,
@@ -39,7 +39,7 @@ export class CourseComponent implements OnInit, OnDestroy {
 
     private getCourse() {
         this.dataService.getCourse(this.course_id).subscribe(
-            data => {this.course = data},
+            data => this.course = data,
             error => console.log(error),
             () => this.isLoading = false
         );

@@ -4,6 +4,8 @@
 var express = require('express');
 var router = express.Router();
 var Course = require('../../app/models').course;
+var Students = require('../../app/models').student;
+var Lecturers = require('../../app/models').lecturer;
 
 // APIs
 // select all
@@ -47,11 +49,16 @@ router.post('/course', function(req, res) {
 
 // find by id
 router.get('/course/:id', function(req, res) {
-    console.log("here");
-    Course.findOne({_id: req.params.id}, function(err, obj) {
-        if(err) return console.error(err);
-        return res.json(obj);
-    })
+    Course.findOne({_id: req.params.id})
+        .populate('coordinator')
+        .populate('students')
+        .exec()
+        .then(doc => {
+            return res.json(doc);
+        })
+        .catch(err => {
+            return console.error(err);
+        })
 });
 
 // update by id

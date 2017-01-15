@@ -51,6 +51,7 @@ var register = function(req,callback) {
             var email = cleanString(body.email);
             var password = cleanString(body.password);
             var role = cleanString(body.role);
+            var gender = cleanString(body.gender);
             var firstname = cleanString(body.firstname);
             var lastname = cleanString(body.lastname);
             var middlename = cleanString(body.middlename); //  ToDo: Should really validate all these parameters and create a laravel style validation class for 'em !
@@ -62,6 +63,7 @@ var register = function(req,callback) {
                             var newuser = {
                                 email: email,
                                 name: {first : firstname, middle : middlename, last : lastname},
+                                gender: gender,
                                 salt :hash.salt,
                                 hash: hash.hash(password),
                                 token: hash.token(email)

@@ -6,6 +6,7 @@ import { ToastComponent } from '../../shared/toast/toast.component';
 import { DataService } from '../../services/data.service';
 
 import { User } from '../../interfaces/user.interface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -42,6 +43,7 @@ export class RegisterComponent implements OnInit {
   ];
 
   constructor(private http: Http,
+              private router: Router,
               private dataService: DataService,
               private toast: ToastComponent) { }
 
@@ -83,9 +85,9 @@ export class RegisterComponent implements OnInit {
     console.log(user);
     this.dataService.register(user).subscribe(
         res => {
-          let user_ = res.json();
-          console.log(JSON.stringify(user_));
-          this.toast.setMessage(JSON.stringify(user_), 'success');
+          let response = res.json();
+          this.toast.setMessage(response.message, 'success');
+          this.router.navigate(['login']);
         },
         error => console.log(error)
     );
