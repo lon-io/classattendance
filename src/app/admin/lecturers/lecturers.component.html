@@ -28,11 +28,11 @@
         </tbody>
         <tbody *ngIf="!isEditing">
         <tr *ngFor="let lecturer of lecturers; let i = index">
-          <td><a [routerLink]="['/lecturer', lecturer?._id]">{{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.middle}} {{lecturer?.name?.last}}</a>
+          <td><a [routerLink]="['/common/lecturer', lecturer?._id]">{{lecturer?.title}} {{lecturer?.name?.first}} {{lecturer?.name?.middle}} {{lecturer?.name?.last}}</a>
             </td>
           <td>{{lecturer.email}}</td>
           <td>{{lecturer.specialization}}</td>
-          <td><small *ngFor="let course of lecturer?.courses"><a [routerLink]="['/course',course._id]">{{course.code}}</a> </small></td>
+          <td><small *ngFor="let course of lecturer?.courses"><a [routerLink]="['/common/course',course._id]">{{course.code}}</a> </small></td>
           <td *ngIf="isUserAdmin" class="actions">
             <button #del id="del{{i}}" class="btn btn-sm btn-success"  (click)="deleteLecturer(lecturer, i)"><em class="fa fa-trash"></em></button>
           </td>

@@ -8,9 +8,9 @@ import {LecturerComponent} from './lecturer/lecturer.component';
 import {StudentComponent} from './student/student.component';
 
 const commonsRoutes: Routes = [
-    { path: 'course/:id', component: CourseComponent },
-    { path: 'lecturer/:id', component: LecturerComponent },
-    { path: 'student/:id', component: StudentComponent }
+    { path: 'common/course/:id', component: CourseComponent },
+    { path: 'common/lecturer/:id', component: LecturerComponent },
+    { path: 'common/student/:id', component: StudentComponent }
 ];
 
 @NgModule({

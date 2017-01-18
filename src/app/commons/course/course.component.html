@@ -75,11 +75,11 @@
                 </tr>
                 <tr>
                   <td>Coordinator</td>
-                  <td><a [routerLink]="['/lecturer', course?.coordinator?._id]">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>
+                  <td><a [routerLink]="['/common/lecturer', course?.coordinator?._id]">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>
                 </tr>
                 <tr>
                   <td>Registered Students</td>
-                  <td><small *ngFor="let student of course?.students"><a [routerLink]="['/student', student?._id]">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a> </small></td>
+                  <td><small *ngFor="let student of course?.students"><a [routerLink]="['/common/student', student?._id]">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a> </small></td>
                 </tr>
                 </tbody>
               </table>

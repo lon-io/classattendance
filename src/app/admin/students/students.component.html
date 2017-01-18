@@ -30,12 +30,12 @@
         </tbody>
         <tbody *ngIf="!isEditing">
         <tr *ngFor="let student of students; let i = index">
-          <td><a [routerLink]="['/student', student?._id]">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a></td>
+          <td><a [routerLink]="['/common/student', student?._id]">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a></td>
           <td>{{student?.email}}</td>
           <td>{{student?.matric_no}}</td>
           <td>{{student?.rfid_uid}}</td>
           <td>{{student?.level}}</td>
-          <td><small *ngFor="let course of student?.courses"><a [routerLink]="['/course',course._id]">{{course.code}}</a> </small></td>
+          <td><small *ngFor="let course of student?.courses"><a [routerLink]="['/common/course',course._id]">{{course.code}}</a> </small></td>
           <td *ngIf="isUserAdmin" class="actions">
             <button #del id="del{{i}}" class="btn btn-sm btn-success"  (click)="deleteStudent(student, i)"><em class="fa fa-trash"></em></button>
           </td>

@@ -35,7 +35,7 @@
         </a>
       </li>
       <li class="nav-item" >
-        <a [routerLink]="['/student',student_id]" class="nav-link" routerLinkActive="active">
+        <a [routerLink]="['/common/student',student_id]" class="nav-link" routerLinkActive="active">
           {{student?.name.first}}
         </a>
       </li>
@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                   <td>Registered Courses</td>
-                  <td><small *ngFor="let course of student?.courses"><a [routerLink]="['/course',course._id]">{{course.code}}</a> </small></td>
+                  <td><small *ngFor="let course of student?.courses"><a [routerLink]="['/common/course',course._id]">{{course.code}}</a> </small></td>
                 </tr>
                 </tbody>
               </table>

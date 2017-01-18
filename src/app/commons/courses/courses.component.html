@@ -30,12 +30,12 @@
                 </tbody>
                 <tbody *ngIf="!isEditing">
                 <tr *ngFor="let course of courses; let i = index" [style.background-color]="getStyle(course)">
-                    <td><a [routerLink]="['/course',course._id]">{{course.title}}</a></td>
+                    <td><a [routerLink]="['/common/course',course._id]">{{course.title}}</a></td>
                     <td>{{course.code}}</td>
                     <td>{{course.units}}</td>
                     <td>{{course.level}}</td>
                     <td>{{course?.about?.bio}}</td>
-                    <td><a [routerLink]="['/lecturer',course?.coordinator?._id]">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>
+                    <td><a [routerLink]="['/common/lecturer',course?.coordinator?._id]">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>
                     <td *ngIf="isUserAdmin" class="actions">
                         <button class="btn btn-sm btn-warning" (click)="enableEditing(course)"><em class="fa fa-pencil"></em></button>
                         <button class="btn btn-sm btn-danger" (click)="deleteCourse(course)"><em class="fa fa-trash"></em></button>
