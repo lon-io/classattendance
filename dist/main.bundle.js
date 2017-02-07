@@ -4053,6 +4053,9 @@ var DataService = (function () {
     DataService.prototype.register = function (user) {
         return this.http.post('/api/register', JSON.stringify(user), this.options);
     };
+    DataService.prototype.getLectures = function (course_id) {
+        return this.http.get("/api/lectures_/" + course_id).map(function (res) { return res.json(); });
+    };
     DataService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object])
@@ -20041,6 +20044,8 @@ var RouterOutletMap = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__course_course_component__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lecturer_lecturer_component__ = __webpack_require__(334);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__student_student_component__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__lectures_lectures_component__ = __webpack_require__(746);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__lecture_lecture_component__ = __webpack_require__(749);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CommonsModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20051,6 +20056,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -20076,7 +20083,9 @@ var CommonsModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__["a" /* CoursesComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__course_course_component__["a" /* CourseComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__lecturer_lecturer_component__["a" /* LecturerComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__student_student_component__["a" /* StudentComponent */]
+                __WEBPACK_IMPORTED_MODULE_8__student_student_component__["a" /* StudentComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__lectures_lectures_component__["a" /* LecturesComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__lecture_lecture_component__["a" /* LectureComponent */]
             ],
             exports: [
                 __WEBPACK_IMPORTED_MODULE_2__courses_courses_component__["a" /* CoursesComponent */]
@@ -58632,6 +58641,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__course_course_component__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__lecturer_lecturer_component__ = __webpack_require__(334);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__student_student_component__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lectures_lectures_component__ = __webpack_require__(746);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return CommonsRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58647,10 +58657,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var commonsRoutes = [
     { path: 'common/course/:id', component: __WEBPACK_IMPORTED_MODULE_2__course_course_component__["a" /* CourseComponent */] },
     { path: 'common/lecturer/:id', component: __WEBPACK_IMPORTED_MODULE_3__lecturer_lecturer_component__["a" /* LecturerComponent */] },
-    { path: 'common/student/:id', component: __WEBPACK_IMPORTED_MODULE_4__student_student_component__["a" /* StudentComponent */] }
+    { path: 'common/student/:id', component: __WEBPACK_IMPORTED_MODULE_4__student_student_component__["a" /* StudentComponent */] },
+    { path: 'common/lectures/:id', component: __WEBPACK_IMPORTED_MODULE_5__lectures_lectures_component__["a" /* LecturesComponent */] }
 ];
 var CommonsRoutingModule = (function () {
     function CommonsRoutingModule() {
@@ -62234,7 +62246,7 @@ module.exports = "<!--<div class=\"container\">-->\n\n<!--&lt;!&ndash; .navbar &
 /* 702 */
 /***/ function(module, exports) {
 
-module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<nav *ngIf=\"!isLoading\" class=\"navbar navbar-full navbar-dark navbar-custom\">\n  <button class=\"navbar-toggler hidden-lg-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#mainNavbarCollapse\">\n    &#9776;\n  </button>\n  <a routerLink=\"/home\" class=\"navbar-brand\">\n    Class Attendance System\n  </a>\n  <div class=\"collapse navbar-toggleable-md\" id=\"mainNavbarCollapse\">\n    <ul class=\"nav navbar-nav\">\n      <li class=\"nav-item\">\n        <a routerLink=\"/home\" class=\"nav-link\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" >Home</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAnAdmin()\">\n        <a routerLink=\"/admin\" class=\"nav-link\" routerLinkActive=\"active\">\n          Admin\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserALecturer()\">\n        <a routerLink=\"/lecturer\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAStudent()\">\n        <a routerLink=\"/student\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" >\n        <a [routerLink]=\"['/course',course_id]\" class=\"nav-link\" routerLinkActive=\"active\">\n          {{course?.code}}\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<div *ngIf=\"!isLoading\" class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad\" >\n      <div class=\"panel panel-info\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">{{course?.title}}</h3>\n        </div>\n        <div class=\"panel-body\">\n          <div class=\"row\">\n            <div class=\"col-md-3\" align=\"center\"> <img alt=\"Course Avatar\" [src]=\"course?.grav_url\" class=\"img-circle img-responsive\"> </div>\n            <!--<div class=\"col-md-3\" align=\"center\"> <span class=\"fa fa-\"> </div>-->\n            <div class=\" col-md-9\">\n              <table class=\"table table-course-information\">\n                <tbody>\n                <tr>\n                  <td>Code:</td>\n                  <td>{{course?.code}}</td>\n                </tr>\n                <tr>\n                  <td>About</td>\n                  <td>{{course?.about?.bio}}</td>\n                </tr>\n                <tr>\n                  <td>Units</td>\n                  <td>{{course?.units}}</td>\n                </tr>\n                <tr>\n                  <td>Level</td>\n                  <td>{{course?.level}}</td>\n                </tr>\n                <tr>\n                  <td>Coordinator</td>\n                  <td><a [routerLink]=\"['/common/lecturer', course?.coordinator?._id]\">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>\n                </tr>\n                <tr>\n                  <td>Registered Students</td>\n                  <td><small *ngFor=\"let student of course?.students\"><a [routerLink]=\"['/common/student', student?._id]\">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a> </small></td>\n                </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n        <div class=\"panel-footer\">\n        </div>\n\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<nav *ngIf=\"!isLoading\" class=\"navbar navbar-full navbar-dark navbar-custom\">\n  <button class=\"navbar-toggler hidden-lg-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#mainNavbarCollapse\">\n    &#9776;\n  </button>\n  <a routerLink=\"/home\" class=\"navbar-brand\">\n    Class Attendance System\n  </a>\n  <div class=\"collapse navbar-toggleable-md\" id=\"mainNavbarCollapse\">\n    <ul class=\"nav navbar-nav\">\n      <li class=\"nav-item\">\n        <a routerLink=\"/home\" class=\"nav-link\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" >Home</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAnAdmin()\">\n        <a routerLink=\"/admin\" class=\"nav-link\" routerLinkActive=\"active\">\n          Admin\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserALecturer()\">\n        <a routerLink=\"/lecturer\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAStudent()\">\n        <a routerLink=\"/student\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" >\n        <a [routerLink]=\"['/course',course_id]\" class=\"nav-link\" routerLinkActive=\"active\">\n          {{course?.code}}\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<div *ngIf=\"!isLoading\" class=\"container\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 toppad\" >\n      <div class=\"panel panel-info\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">{{course?.title}}</h3>\n        </div>\n        <div class=\"panel-body\">\n          <div class=\"row\">\n            <div class=\"col-md-3\" align=\"center\"> <img alt=\"Course Avatar\" [src]=\"course?.grav_url\" class=\"img-circle img-responsive\"> </div>\n            <!--<div class=\"col-md-3\" align=\"center\"> <span class=\"fa fa-\"> </div>-->\n            <div class=\" col-md-9\">\n              <table class=\"table table-course-information\">\n                <tbody>\n                <tr>\n                  <td>Code:</td>\n                  <td>{{course?.code}}</td>\n                </tr>\n                <tr>\n                  <td>About</td>\n                  <td>{{course?.about?.bio}}</td>\n                </tr>\n                <tr>\n                  <td>Units</td>\n                  <td>{{course?.units}}</td>\n                </tr>\n                <tr>\n                  <td>Level</td>\n                  <td>{{course?.level}}</td>\n                </tr>\n                <tr>\n                  <td>Coordinator</td>\n                  <td><a [routerLink]=\"['/common/lecturer', course?.coordinator?._id]\">{{course?.coordinator?.title}} {{course?.coordinator?.name?.first}} {{course?.coordinator?.name?.last}}</a></td>\n                </tr>\n                <tr>\n                  <td>Registered Students</td>\n                  <td><small *ngFor=\"let student of course?.students\"><a [routerLink]=\"['/common/student', student?._id]\">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a> </small></td>\n                </tr>\n                <tr>\n                  <td>Lectures</td>\n                  <td> <a [routerLink]=\"['/common/lectures', course?._id]\">View All</a> </td>\n                </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n        </div>\n        <div class=\"panel-footer\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ },
 /* 703 */
@@ -65707,6 +65719,135 @@ if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment *
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app___["a" /* AppModule */]);
 
+
+/***/ },
+/* 746 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(21);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LecturesComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var LecturesComponent = (function () {
+    function LecturesComponent(http, dataService, userService, toast, route) {
+        this.http = http;
+        this.dataService = dataService;
+        this.userService = userService;
+        this.toast = toast;
+        this.route = route;
+        // private lecture: Lecture;
+        this.lectures = [];
+        this.isLoading = true;
+    }
+    LecturesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this.route.params.subscribe(function (params) {
+            // this.course_id = +params['id']; // (+) converts string 'id' to a number
+            _this.course_id = params['id']; // (+) converts string 'id' to a number
+            // Dispatch action to load the compoonent data.
+            _this.getLectures();
+        });
+        this.isUserAdmin = this.userService.isUserAnAdmin();
+        this.isUserLecturer = this.userService.isUserALecturer();
+        this.isUserStudent = this.userService.isUserAStudent();
+        this.currentUser = this.userService.getUserDetails();
+    };
+    LecturesComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+    };
+    LecturesComponent.prototype.getLectures = function () {
+        var _this = this;
+        this.dataService.getLectures(this.course_id).subscribe(function (data) { return _this.lectures = data; }, function (error) { return console.log(error); }, function () { return _this.isLoading = false; });
+    };
+    LecturesComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
+            selector: 'app-lectures',
+            template: __webpack_require__(748),
+            styles: [__webpack_require__(747)]
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__["a" /* UserService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_user_user_service__["a" /* UserService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__shared_toast_toast_component__["a" /* ToastComponent */]) === 'function' && _d) || Object, (typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_5__angular_router__["c" /* ActivatedRoute */]) === 'function' && _e) || Object])
+    ], LecturesComponent);
+    return LecturesComponent;
+    var _a, _b, _c, _d, _e;
+}());
+
+
+/***/ },
+/* 747 */
+/***/ function(module, exports) {
+
+module.exports = ".table td, .table th {\n    text-align: center;\n    width: 15%;\n}\n\n.card{\n    margin-top: 2em;\n    margin-bottom: 1.5em;\n}\n\n.table td.actions, .table th.actions {\n    text-align: center;\n    width: 10%;\n}"
+
+/***/ },
+/* 748 */
+/***/ function(module, exports) {
+
+module.exports = "<div class=\"card\" *ngIf=\"isLoading\">\n  <h4 class=\"card-header\">Loading...</h4>\n  <div class=\"card-block text-xs-center\">\n    <i class=\"fa fa-circle-o-notch fa-spin fa-3x\"></i>\n  </div>\n</div>\n\n<app-toast [message]=\"toast.message\"></app-toast>\n\n<nav *ngIf=\"!isLoading\" class=\"navbar navbar-full navbar-dark navbar-custom\">\n  <button class=\"navbar-toggler hidden-lg-up\" type=\"button\" data-toggle=\"collapse\" data-target=\"#mainNavbarCollapse\">\n    &#9776;\n  </button>\n  <a routerLink=\"/home\" class=\"navbar-brand\">\n    Class Attendance System\n  </a>\n  <div class=\"collapse navbar-toggleable-md\" id=\"mainNavbarCollapse\">\n    <ul class=\"nav navbar-nav\">\n      <li class=\"nav-item\">\n        <a routerLink=\"/home\" class=\"nav-link\" routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{exact:true}\" >Home</a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAnAdmin()\">\n        <a routerLink=\"/admin\" class=\"nav-link\" routerLinkActive=\"active\">\n          Admin\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserALecturer()\">\n        <a routerLink=\"/lecturer\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n      <li class=\"nav-item\" *ngIf=\"userService.isUserAStudent()\">\n        <a routerLink=\"/student\" class=\"nav-link\" routerLinkActive=\"active\">\n          Dashboard\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n\n<div class=\"container\">\n  <div class=\"card\" *ngIf=\"!isLoading\">\n    <h4 class=\"card-header\">All lectures ({{lectures.length}})</h4>\n    <div class=\"card-block\">\n      <table *ngFor=\"let lecture of lectures; let i = index\" class=\"table table-bordered table-hover table-responsive\">\n        <thead class=\"thead-inverse\">\n        <tr>\n          <th>Topic</th>\n          <th>Created</th>\n          <th>Last Updated</th>\n          <th>Course</th>\n        </tr>\n        </thead>\n        <tbody *ngIf=\"lectures.length === 0\">\n        <tr>\n          <td colspan=\"3\">There are no lectures in the DB. Add a new lecture below.</td>\n        </tr>\n        </tbody>\n        <tbody *ngIf=\"!isEditing\">\n        <tr >\n          <td>{{lecture.topic}}</td>\n          <td>{{lecture.createdAt| date:'short'}}</td>\n          <td>{{lecture.updatedAt | date:'short'}}</td>\n          <td><a [routerLink]=\"['/common/course',lecture?.course?._id]\">{{lecture?.course?.code}}</a></td>\n        </tr>\n        </tbody>\n      </table>\n    </div>\n  </div>\n\n\n</div>\n\n\n"
+
+/***/ },
+/* 749 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return LectureComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LectureComponent = (function () {
+    function LectureComponent() {
+    }
+    LectureComponent.prototype.ngOnInit = function () {
+    };
+    LectureComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
+            selector: 'app-lecture',
+            template: __webpack_require__(751),
+            styles: [__webpack_require__(750)]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], LectureComponent);
+    return LectureComponent;
+}());
+
+
+/***/ },
+/* 750 */
+/***/ function(module, exports) {
+
+module.exports = ""
+
+/***/ },
+/* 751 */
+/***/ function(module, exports) {
+
+module.exports = "<p>\n  lecture works!\n</p>\n"
 
 /***/ }
 ],[742]);

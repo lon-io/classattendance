@@ -64,4 +64,16 @@ export class DataService {
     }
 
 
+    getLectures(course_id: any) {
+        return this.http.get(`/api/lectures_/${course_id}`).map(res => res.json());
+    }
+
+    editLecture(lecture: any) {
+        return this.http.put(`/api/lecture_/${lecture._id}`, JSON.stringify(lecture), this.options);
+    }
+
+    deleteLecture(lecture: any) {
+        return this.http.delete(`/api/lecture/${lecture._id}`, this.options);
+    }
+
 }

@@ -81,6 +81,10 @@
                   <td>Registered Students</td>
                   <td><small *ngFor="let student of course?.students"><a [routerLink]="['/common/student', student?._id]">{{student?.name?.first}} {{student?.name?.middle}} {{student?.name?.last}}</a> </small></td>
                 </tr>
+                <tr>
+                  <td>Lectures</td>
+                  <td> <a [routerLink]="['/common/lectures', course?._id]">View All</a> </td>
+                </tr>
                 </tbody>
               </table>
             </div>
@@ -88,7 +92,6 @@
         </div>
         <div class="panel-footer">
         </div>
-
       </div>
     </div>
   </div>

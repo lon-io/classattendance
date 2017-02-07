@@ -7,6 +7,8 @@ import {CommonsRoutingModule} from './commons-routing.module';
 import { CourseComponent } from './course/course.component';
 import { LecturerComponent } from './lecturer/lecturer.component';
 import { StudentComponent } from './student/student.component';
+import { LecturesComponent } from './lectures/lectures.component';
+import { LectureComponent } from './lecture/lecture.component';
 
 @NgModule({
     imports: [
@@ -20,7 +22,9 @@ import { StudentComponent } from './student/student.component';
         CoursesComponent,
         CourseComponent,
         LecturerComponent,
-        StudentComponent
+        StudentComponent,
+        LecturesComponent,
+        LectureComponent
     ],
     exports: [
         CoursesComponent
