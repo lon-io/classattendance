@@ -42,26 +42,45 @@
   <div class="card" *ngIf="!isLoading">
     <h4 class="card-header">All lectures ({{lectures.length}})</h4>
     <div class="card-block">
-      <table *ngFor="let lecture of lectures; let i = index" class="table table-bordered table-hover table-responsive">
+      <table class="table table-bordered table-hover table-responsive">
         <thead class="thead-inverse">
         <tr>
           <th>Topic</th>
           <th>Created</th>
           <th>Last Updated</th>
           <th>Course</th>
+          <th class="actions" *ngIf="isUserAdmin || isUserLecturer">Actions</th>
         </tr>
         </thead>
         <tbody *ngIf="lectures.length === 0">
         <tr>
-          <td colspan="3">There are no lectures in the DB. Add a new lecture below.</td>
+          <td colspan="3">There are no lectures in the DB. Add a new lecture from the device.</td>
         </tr>
         </tbody>
         <tbody *ngIf="!isEditing">
-        <tr >
-          <td>{{lecture.topic}}</td>
+        <tr *ngFor="let lecture of lectures; let i = index">
+          <td><a [routerLink]="['/common/lecture',lecture?._id]">{{lecture.topic}}</a></td>
           <td>{{lecture.createdAt| date:'short'}}</td>
           <td>{{lecture.updatedAt | date:'short'}}</td>
           <td><a [routerLink]="['/common/course',lecture?.course?._id]">{{lecture?.course?.code}}</a></td>
+          <td *ngIf="isUserAdmin" class="actions">
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(lecture)"><em class="fa fa-pencil"></em></button>
+            <button class="btn btn-sm btn-danger" (click)="deleteLecture(lecture)"><em class="fa fa-trash"></em></button>
+          </td>
+        </tr>
+        </tbody>
+        <tbody *ngIf="isUserAdmin && isEditing">
+        <tr>
+          <td colspan="3">You are allowed to edit only the Topic of this lecture.</td>
+          <td colspan="7">
+            <form class="form-inline" #form="ngForm" (ngSubmit)="editLecture(lecture)" style="display:inline">
+              <div class="form-group">
+                <input class="form-control" type="text" name="topic" [(ngModel)]="lecture.topic" placeholder="Topic" required>
+              </div>
+              <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+            </form>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+          </td>
         </tr>
         </tbody>
       </table>

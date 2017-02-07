@@ -76,4 +76,7 @@ export class DataService {
         return this.http.delete(`/api/lecture/${lecture._id}`, this.options);
     }
 
+    getLecture(lecture_id: any) {
+        return this.http.get(`/api/lecture/${lecture_id}`).map(res => res.json());
+    }
 }
