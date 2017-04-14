@@ -51,9 +51,11 @@ export class UserService {
 
     isUserAnAdmin() {
         if (this.isLoggedIn()) {
+            let current_user = JSON.parse(localStorage.getItem('current_user'));
+            // console.log(current_user);
             return isNull(
-                JSON.parse(localStorage.getItem('current_user')).role
-            ) ? false : (JSON.parse(localStorage.getItem('current_user')).role.slug  === 'admin');
+                current_user.is_admin
+            )  ? false : (current_user.is_admin);
         }
         return false;
     }
