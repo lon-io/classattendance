@@ -1,10 +1,10 @@
-import { Angular2FullStackPage } from './app.po';
+import { ClassAttendance } from './app.po';
 
 describe('angular2-full-stack App', function() {
-  let page: Angular2FullStackPage;
+  let page: ClassAttendance;
 
   beforeEach(() => {
-    page = new Angular2FullStackPage();
+    page = new ClassAttendance();
   });
 
   it('should display message saying app works', () => {

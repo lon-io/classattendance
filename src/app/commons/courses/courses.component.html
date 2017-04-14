@@ -25,7 +25,8 @@
                 </thead>
                 <tbody *ngIf="courses.length === 0">
                 <tr>
-                    <td colspan="3">There are no courses in the DB. Add a new course below.</td>
+                    <td colspan="3" *ngIf="isUserAdmin">There are no courses in the Database. Add a new course below.</td>
+                    <td colspan="3" *ngIf="!isUserAdmin">There are no courses in the Database</td>
                 </tr>
                 </tbody>
                 <tbody *ngIf="!isEditing">

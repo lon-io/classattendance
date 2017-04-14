@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
@@ -6,7 +6,6 @@ import {Course} from './course.interface';
 import {DataService} from '../../services/data.service';
 import {ToastComponent} from '../../shared/toast/toast.component';
 import {UserService} from '../../services/user/user.service';
-import {ViewChildren} from '@angular/core/src/metadata/di';
 
 
 @Component({
@@ -46,10 +45,6 @@ export class CoursesComponent implements OnInit {
 
     ngOnInit() {
 
-        this.getCourses();
-
-        this.getLecturers();
-
         this.course = {
             _id: null,
             title: '',
@@ -73,14 +68,26 @@ export class CoursesComponent implements OnInit {
         this.isUserLecturer = this.userService.isUserALecturer();
         this.isUserStudent = this.userService.isUserAStudent();
         this.currentUser = this.userService.getUserDetails();
+
+        this.getCourses();
+
+        this.getLecturers();
     }
 
     private getCourses() {
-        this.dataService.getCourses().subscribe(
-            data => this.courses = data,
-            error => console.log(error),
-            () => this.isLoading = false
-        );
+        if (this.isUserLecturer) {  // Get only Courses the Lecturer is coordinating
+            this.dataService.getCoursesForLecturer(this.userService.getUserDetails()._id).subscribe(
+                data => this.courses = data,
+                error => console.log(error),
+                () => this.isLoading = false
+            );
+        } else {
+            this.dataService.getCourses().subscribe(
+                data => this.courses = data,
+                error => console.log(error),
+                () => this.isLoading = false
+            );
+        }
     }
 
     private getLecturers() {

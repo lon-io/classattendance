@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.18",
-    "name": "angular2-full-stack"
+    "version": "0.0.0",
+    "name": "rfid_attendance"
   },
   "apps": [
     {
@@ -11,8 +11,9 @@
         "public/assets",
         "public/assets/favicon.ico"
       ],
-      "index": "public/index.html",
+      "index": "index.html",
       "main": "main.ts",
+      "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
@@ -27,8 +28,8 @@
         "../node_modules/tether/dist/js/tether.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }

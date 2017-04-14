@@ -22,11 +22,11 @@ exports.config = {
   },
   useAllAngular2AppRoots: true,
   beforeLaunch: function() {
-    require('ts-node').register({
-      project: 'e2e'
-    });
+      require('ts-node').register({
+          project: 'e2e/tsconfig.e2e.json'
+      });
   },
-  onPrepare: function() {
-    jasmine.getEnv().addReporter(new SpecReporter());
-  }
+    onPrepare() {
+        jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    }
 };

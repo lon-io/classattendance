@@ -43,6 +43,10 @@ export class DataService {
         return this.http.get('/api/courses').map(res => res.json());
     }
 
+    getCoursesForLecturer(lecturer_id) {
+        return this.http.get(`/api/courses/${lecturer_id}`).map(res => res.json());
+    }
+
     getCourse(course_id) {
         return this.http.get(`/api/course/${course_id}`).map(res => res.json());
     }

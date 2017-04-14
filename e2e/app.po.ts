@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class Angular2FullStackPage {
+export class ClassAttendance {
   navigateTo() {
     return browser.get('/');
   }
