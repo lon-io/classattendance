@@ -1,38 +1,38 @@
 <div class="card" *ngIf="isLoading">
-  <h4 class="card-header">Welcome</h4>
-  <div class="card-block text-xs-center">
-    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
-  </div>
+    <h4 class="card-header">Welcome</h4>
+    <div class="card-block text-xs-center">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+    </div>
 </div>
 
 <app-toast [message]="toast.message"></app-toast>
 
 <!-- About Section -->
 <section class="success" >
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-xs-center">
-        <h2>About</h2>
-        <hr class="star-light">
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-xs-center">
+                <h2>About</h2>
+                <hr class="star-light">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 offset-lg-2">
+                <p>This is the web app for the project titled 'RFID Class Attendance System'.
+                    It is built with Angular2 using Typescript. The app is served by a nodejs app which
+                    also provides API routes for the hardware implementation.</p>
+            </div>
+            <div class="col-lg-4">
+                <p>This App provides an interface for students and lecturers to login, signup. It also enables students to keep track of their,
+                    class attendance records for specific courses. Similarly, lecturers can view records for courses they co-ordinate and download
+                    relevant data.
+                </p>
+            </div>
+            <div class="col-lg-8 offset-lg-2 text-xs-center">
+                <a href="#" class="btn btn-lg btn-outline">
+                    <i class="fa fa-download"></i> Download Theme
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-lg-4 offset-lg-2">
-        <p>This is the web app for the project titled 'RFID Class Attendance System'.
-          It is built with Angular2 using Typescript. The app is served by a nodejs app which
-          also provides API routes for the hardware implementation.</p>
-      </div>
-      <div class="col-lg-4">
-        <p>This App provides an interface for students and lecturers to login, signup. It also enables students to keep track of their,
-          class attendance records for specific courses. Similarly, lecturers can view records for courses they co-ordinate and download
-          relevant data.
-        </p>
-      </div>
-      <div class="col-lg-8 offset-lg-2 text-xs-center">
-        <a href="#" class="btn btn-lg btn-outline">
-          <i class="fa fa-download"></i> Download Theme
-        </a>
-      </div>
-    </div>
-  </div>
 </section>

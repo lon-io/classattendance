@@ -104,9 +104,6 @@ header .intro-text .skills {
     }
 }
 
-
-
-
 .navbar-custom {
     background: #2C3E50;
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -160,14 +157,15 @@ header .intro-text .skills {
     margin-left: 0;
 }
 
-.navbar-custom .navbar-toggle {
+.navbar-custom .navbar-toggler {
+    line-height: 80%;
     color: white;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: 30px;
     border-color: white;
 }
-.navbar-custom .navbar-toggle:hover,
-.navbar-custom .navbar-toggle:focus {
+.navbar-custom .navbar-toggler:hover,
+.navbar-custom .navbar-toggler:focus {
     background-color: #18BC9C;
     color: white;
     border-color: #18BC9C;
@@ -190,11 +188,7 @@ header .intro-text .skills {
     .navbar-brand {
         float: left;
     }
-    /*.navbar-nav .nav-item {*/
-    /*float: right;*/
-    /*}*/
     .navbar-nav{
-        /*width: 100%;*/
         float: right;
         display: inline;
     }
@@ -202,6 +196,46 @@ header .intro-text .skills {
     .navbar-nav .nav-item + .nav-item,
     .navbar-nav .nav-link + .nav-link {
         margin-left: 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    section {
+        padding: 75px 0;
+    }
+    section.first {
+        padding-top: 75px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-custom {
+        font-weight: 600;
+    }
+    .navbar-brand {
+        font-size: 1.0rem;
+    }
+    .navbar-nav li a {
+        font-size: 0.85rem;
+    }
+    .navbar-custom .navbar-toggler {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 300px) {
+
+    .navbar-custom {
+        font-weight: 600;
+    }
+    .navbar-brand {
+        font-size: 0.7rem;
+    }
+    .navbar-nav li a {
+        font-size: 0.6rem;
+    }
+    .navbar-custom .navbar-toggler {
+        font-size: 20px;
     }
 }
 
@@ -218,18 +252,6 @@ section.success {
     background: #18BC9C;
     color: white;
 }
-@media (max-width: 767px) {
-    section {
-        padding: 75px 0;
-    }
-    section.first {
-        padding-top: 75px;
-    }
-}
-
-
-
-
 
 
 .btn-outline {
@@ -347,4 +369,10 @@ fieldset[disabled] .btn-success.active {
 .btn:active,
 .btn.active {
     outline: none;
+}
+
+/* For unstyled lists*/
+ul.unstyled {
+    list-style: none;
+    padding-left:0;
 }

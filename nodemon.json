@@ -1,0 +1,5 @@
+{ 
+	"watch": ["src/server/**/*.js"],
+	"ignore": ["src/server/**/*.spec.ts"],
+	"exec": "node start.js"
+}

@@ -49,6 +49,7 @@ export class UserService {
         return false;
     }
 
+    // Todo : This methos is currently not working, it should ideally check for the slug value
     isUserAnAdmin() {
         if (this.isLoggedIn()) {
             let current_user = JSON.parse(localStorage.getItem('current_user'));

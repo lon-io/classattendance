@@ -7,8 +7,9 @@
   "angular-cli": {},
   "scripts": {
     "setup": "node setup.js",
-    "dev": "nodemon start.js",
-    "start": "concurrently \"ng build -w\" \"nodemon start.js\"",
+    "dev": "concurrently \"ng serve -pc proxy.conf.json --open\" \"nodemon\"",
+    "prod": "concurrently \"mongod\" \"ng build -aot -prod && node start.js\"",
+    "start": "concurrently \"ng build -w\" \"node start.js\"",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",

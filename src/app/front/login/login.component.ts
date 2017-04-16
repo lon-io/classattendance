@@ -56,6 +56,8 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['lecturer']);
             }else if (this.userService.isUserAnAdmin()) {
                 this.router.navigate(['admin']);
+            } else {
+                this.router.navigate(['home']);
             }
         }
 
