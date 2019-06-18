@@ -50,14 +50,10 @@ router.post('/course', function(req, res) {
     obj.save(function(err, obj) {
         if(err) return console.error(err);
         Course
-            .populate(obj, 'coordinator', (err, doc) => {
+            .populate(obj, ['coordinator', 'students'], (err, doc) => {
                 if(err) return console.error(err);
                 res.status(200).json(doc);
-            })
-            .populate(obj, 'students', (err, doc) => {
-                if(err) return console.error(err);
-                res.status(200).json(doc);
-            })
+            });
     });
 });
 
