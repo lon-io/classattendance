@@ -1,8 +1,12 @@
-# This is web app Lon Ilesanmi's BSc. Project
+# Class Attendance System
 
-The includes only the Angular2 front-end built upon the [Angular CLI](https://github.com/angular/angular-cli) starter project.
-It also includes a NODEJS server.
-It provides an interface for a class attendance system for a College department
+Web application and server component for a RFID based class attendance system - My BSc. Dissertation
+
+The Angular2 front-end built upon the [Angular CLI](https://github.com/angular/angular-cli) starter project.
+
+The FE provides a class attendance system dashboard interface for students and admins in a College department
+
+The server acts as an interface for an RFID based hardware setup built on a Raspberry PI running dedicated software implemented in Python
 
 ### Pre-requisites
 - Install NodeJS and MongoDB
@@ -14,4 +18,4 @@ npm start
 ```
 
 ### Author
-* [Lon Ilesanmi](https://github.com/lonAlbert)
+* [Lon Ilesanmi](https://github.com/lon-io)
